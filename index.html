@@ -77,6 +77,55 @@
       header{gap:12px}
       .projects,.achievements-grid{grid-template-columns:1fr}
     }
+    /* телефон алё алё */
+@media (max-width: 560px) {
+
+  nav {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--card);
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  }
+  nav.show { display: flex; }
+
+  .burger {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 30px;
+    cursor: pointer;
+  }
+  .burger span {
+    height: 3px;
+    background: var(--dark);
+    border-radius: 2px;
+    transition: .3s;
+  }
+
+  .projects,
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 32px 0;
+  }
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  .container {
+    padding: 16px;
+  }
+}
+</style>
 
     .muted{color:var(--muted)}
     .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(0,118,255,0.08);color:var(--accent);font-weight:700}
@@ -88,6 +137,17 @@
       <div class="logo">
         <div class="mark">Я</div>
         <div>
+
+    <div class="burger" id="burger">
+      <span></span><span></span><span></span>
+    </div>
+
+    <script>
+    document.getElementById('burger').addEventListener('click', () => {
+    document.getElementById('mainNav').classList.toggle('show');
+    });
+    </script>
+
           <div style="font-weight:700">Моё портфолио</div>
           <div class="muted" style="font-size:13px">Разработка беспилотных авиационных систем</div>
         </div>
@@ -238,55 +298,7 @@
     </footer>
   </div>
 <style id="mobile-styles">
-    
-/* телефон алё алё */
-@media (max-width: 560px) {
 
-  nav {
-    display: none;
-    flex-direction: column;
-    gap: 12px;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: var(--card);
-    padding: 12px;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-  }
-  nav.show { display: flex; }
-
-  .burger {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    width: 30px;
-    cursor: pointer;
-  }
-  .burger span {
-    height: 3px;
-    background: var(--dark);
-    border-radius: 2px;
-    transition: .3s;
-  }
-
-  .projects,
-  .achievements-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero {
-    grid-template-columns: 1fr;
-    padding: 32px 0;
-  }
-  .hero h1 {
-    font-size: 26px;
-  }
-
-  .container {
-    padding: 16px;
-  }
-}
 </style>
 
 
