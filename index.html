@@ -194,6 +194,7 @@
       <div class="card">
         <h3>Это мы :)</h3>
         <img src="we1.jpg" alt="Фото" style="width:100%;border-radius:12px;margin-bottom:12px">
+        <div style="font-weight:600"> Тут Сергей с умным видом играет в косынку </div>
     </section>
 
     <section id="thanks" class="thanks">
@@ -236,6 +237,58 @@
       </div>
     </footer>
   </div>
+<style id="mobile-styles">
+    
+/* телефон алё алё */
+@media (max-width: 560px) {
+
+  nav {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--card);
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  }
+  nav.show { display: flex; }
+
+  .burger {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 30px;
+    cursor: pointer;
+  }
+  .burger span {
+    height: 3px;
+    background: var(--dark);
+    border-radius: 2px;
+    transition: .3s;
+  }
+
+  .projects,
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 32px 0;
+  }
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  .container {
+    padding: 16px;
+  }
+}
+</style>
+
 
   <script>
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
