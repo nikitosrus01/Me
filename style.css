@@ -1,65 +1,82 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Плавный скролл и подсветка активной навигации
-    const sections = document.querySelectorAll('.section');
-    const navLinks = document.querySelectorAll('.nav-links a');
+// ==========================================================================
+// LIVE CLOCK (mono readout in nav — reinforces HUD/telemetry feel)
+// ==========================================================================
+function tickClock(){
+  const el = document.getElementById('clock');
+  if(!el) return;
+  const now = new Date();
+  const hh = String(now.getHours()).padStart(2,'0');
+  const mm = String(now.getMinutes()).padStart(2,'0');
+  const ss = String(now.getSeconds()).padStart(2,'0');
+  el.textContent = `${hh}:${mm}:${ss} · CHEL`;
+}
+tickClock();
+setInterval(tickClock, 1000);
 
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15
-    };
+// ==========================================================================
+// SCROLL REVEAL
+// ==========================================================================
+const revealEls = document.querySelectorAll('[data-reveal]');
 
-    const sectionObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                
-                // Подсветка соответствующей ссылки в навигации
-                const id = entry.target.getAttribute('id');
-                navLinks.forEach(link => {
-                    if (link.getAttribute('href') === `#${id}`) {
-                        link.style.color = '#ff6b1a';
-                    } else {
-                        link.style.color = '#d8dce6';
-                    }
-                });
-            }
-        });
-    }, observerOptions);
-
-    sections.forEach(section => {
-        sectionObserver.observe(section);
+if('IntersectionObserver' in window){
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const delay = Math.min(i * 40, 200);
+        setTimeout(() => el.classList.add('in-view'), delay);
+        io.unobserve(el);
+      }
     });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-    // 2. Анимация координат в HUD видоискателе photo.jpg
-    const gpsTag = document.querySelector('.hud-tag:nth-child(2)');
-    const altTag = document.querySelector('.hud-tag:nth-child(3)');
+  revealEls.forEach(el => io.observe(el));
+} else {
+  revealEls.forEach(el => el.classList.add('in-view'));
+}
 
-    if (gpsTag && altTag) {
-        setInterval(() => {
-            // Эмуляция колебания высоты drones
-            const randomAlt = (120 + (Math.random() * 2 - 1)).toFixed(1);
-            altTag.textContent = `ALT: ${randomAlt}m`;
-        }, 1500);
+// ==========================================================================
+// ACTIVE NAV SECTION HIGHLIGHT
+// ==========================================================================
+const sections = document.querySelectorAll('main > .section');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+if('IntersectionObserver' in window && sections.length){
+  const navIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const id = entry.target.id;
+        navLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === `#${id}`);
+        });
+      }
+    });
+  }, { threshold: 0.4, rootMargin: '-80px 0px -40% 0px' });
+
+  sections.forEach(sec => navIO.observe(sec));
+}
+
+// ==========================================================================
+// COPY TO CLIPBOARD (email / telegram)
+// ==========================================================================
+document.querySelectorAll('.copyable').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const value = btn.getAttribute('data-copy');
+    const flag = btn.querySelector('.copy-flag');
+    if(!value || !flag) return;
+
+    try {
+      await navigator.clipboard.writeText(value);
+    } catch (err) {
+      // clipboard API unavailable — fall back silently, still show feedback
     }
 
-    // 3. Динамический отклик мыши на угловые маркеры карточек
-    const frames = document.querySelectorAll('.cad-frame');
-    frames.forEach(frame => {
-        frame.addEventListener('mousemove', (e) => {
-            const rect = frame.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            // Легкий сдвиг элемента для эффекта объема CAD-детали
-            const moveX = (x - rect.width / 2) / 30;
-            const moveY = (y - rect.height / 2) / 30;
-            
-            frame.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        });
-
-        frame.addEventListener('mouseleave', () => {
-            frame.style.transform = 'translate(0px, 0px)';
-        });
-    });
+    const original = flag.textContent;
+    flag.textContent = 'СКОПИРОВАНО';
+    flag.classList.add('copied');
+    setTimeout(() => {
+      flag.textContent = original;
+      flag.classList.remove('copied');
+    }, 1600);
+  });
 });
