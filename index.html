@@ -1,667 +1,315 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Портфолио</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #f8fafc;
-      color: #0f172a;
-      transition: background 0.3s, color 0.2s;
-      line-height: 1.5;
-    }
-
-    /* Тёмная тема */
-    body.dark {
-      background: #0a0f1c;
-      color: #e2e8f0;
-    }
-
-    /* Контейнер */
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* Шапка */
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 24px 0;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    body.dark .header {
-      border-bottom-color: rgba(255,255,255,0.08);
-    }
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .avatar-icon {
-      width: 48px;
-      height: 48px;
-      background: linear-gradient(135deg, #2563eb, #1e40af);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 24px;
-      color: white;
-      box-shadow: 0 8px 20px -8px rgba(37,99,235,0.3);
-    }
-    .logo-text h1 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-    }
-    .logo-text p {
-      font-size: 0.85rem;
-      color: #475569;
-    }
-    body.dark .logo-text p {
-      color: #94a3b8;
-    }
-
-    /* Навигация */
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-    }
-    .nav-links a {
-      text-decoration: none;
-      font-weight: 500;
-      color: #1e293b;
-      transition: color 0.2s;
-    }
-    body.dark .nav-links a {
-      color: #cbd5e1;
-    }
-    .nav-links a:hover {
-      color: #2563eb;
-    }
-    .theme-btn {
-      background: none;
-      border: none;
-      font-size: 1.3rem;
-      cursor: pointer;
-      padding: 8px;
-      border-radius: 40px;
-      color: #1e293b;
-      transition: 0.2s;
-      display: inline-flex;
-      align-items: center;
-    }
-    body.dark .theme-btn {
-      color: #facc15;
-    }
-    .burger {
-      display: none;
-      font-size: 1.6rem;
-      cursor: pointer;
-    }
-
-    /* Герой */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 0.9fr;
-      gap: 48px;
-      padding: 60px 0 40px;
-      align-items: center;
-    }
-    .hero-content h2 {
-      font-size: 3rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-    .highlight {
-      color: #2563eb;
-    }
-    .hero-content p {
-      font-size: 1.1rem;
-      color: #334155;
-      margin-bottom: 28px;
-      max-width: 90%;
-    }
-    body.dark .hero-content p {
-      color: #cbd5e1;
-    }
-    .btn-group {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .btn-primary {
-      background: #2563eb;
-      color: white;
-      padding: 12px 28px;
-      border-radius: 40px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.2s;
-      box-shadow: 0 2px 8px rgba(37,99,235,0.2);
-    }
-    .btn-primary:hover {
-      background: #1d4ed8;
-      transform: translateY(-2px);
-    }
-    .btn-outline {
-      border: 1px solid #cbd5e1;
-      background: transparent;
-      padding: 12px 28px;
-      border-radius: 40px;
-      font-weight: 500;
-      text-decoration: none;
-      color: #1e293b;
-      transition: 0.2s;
-    }
-    body.dark .btn-outline {
-      border-color: #334155;
-      color: #e2e8f0;
-    }
-    .btn-outline:hover {
-      border-color: #2563eb;
-      color: #2563eb;
-    }
-    .hero-card {
-      background: white;
-      border-radius: 28px;
-      padding: 28px;
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
-      border: 1px solid #eef2ff;
-    }
-    body.dark .hero-card {
-      background: #111827;
-      border-color: #1e293b;
-    }
-    .hero-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 12px;
-    }
-
-    /* Секции */
-    section {
-      margin: 60px 0;
-    }
-    .section-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 32px;
-      letter-spacing: -0.3px;
-      border-left: 5px solid #2563eb;
-      padding-left: 20px;
-    }
-
-    /* Карточки проектов */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-      gap: 28px;
-    }
-    .project-card {
-      background: white;
-      border-radius: 24px;
-      padding: 24px;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-      border: 1px solid #e2e8f0;
-    }
-    body.dark .project-card {
-      background: #111827;
-      border-color: #1f2a3e;
-    }
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 25px -12px rgba(0,0,0,0.15);
-    }
-    .project-icon {
-      font-size: 2.2rem;
-      margin-bottom: 16px;
-      color: #2563eb;
-    }
-    .project-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 8px;
-    }
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 16px 0;
-    }
-    .tag {
-      background: #eef2ff;
-      color: #1e40af;
-      font-size: 0.7rem;
-      font-weight: 600;
-      padding: 4px 12px;
-      border-radius: 50px;
-    }
-    body.dark .tag {
-      background: #1e293b;
-      color: #93c5fd;
-    }
-    .project-status {
-      font-size: 0.85rem;
-      color: #475569;
-    }
-    body.dark .project-status {
-      color: #9ca3af;
-    }
-
-    /* Достижения (сетка изображений) */
-    .achievement-block {
-      margin-bottom: 48px;
-    }
-    .achievement-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin: 18px 0;
-    }
-    .photo-grid img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 20px;
-      background: #d1d5db;
-      transition: 0.2s;
-      border: 1px solid rgba(0,0,0,0.05);
-    }
-    body.dark .photo-grid img {
-      border-color: #2d3a5e;
-    }
-    .photo-grid img:hover {
-      transform: scale(1.02);
-    }
-
-    /* Благодарности / партнёры */
-    .thanks-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      margin-top: 24px;
-    }
-    .thanks-card {
-      background: white;
-      border-radius: 24px;
-      padding: 20px;
-      display: flex;
-      gap: 16px;
-      align-items: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-    }
-    body.dark .thanks-card {
-      background: #111827;
-    }
-    .thanks-card img {
-      width: 60px;
-      height: 60px;
-      border-radius: 60px;
-      object-fit: cover;
-    }
-    .thanks-info h4 {
-      font-weight: 700;
-    }
-    .thanks-links {
-      margin-top: 10px;
-      display: flex;
-      gap: 10px;
-    }
-    .thanks-links a {
-      background: #2563eb;
-      color: white;
-      padding: 6px 12px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-
-    /* Контактная форма */
-    .contact-form {
-      background: white;
-      border-radius: 28px;
-      padding: 32px;
-      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
-    }
-    body.dark .contact-form {
-      background: #111827;
-    }
-    .form-group {
-      margin-bottom: 20px;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 14px 18px;
-      border-radius: 20px;
-      border: 1px solid #cbd5e1;
-      background: #f9f9ff;
-      font-family: inherit;
-      transition: 0.2s;
-    }
-    body.dark input, body.dark textarea {
-      background: #1e293b;
-      border-color: #334155;
-      color: #f1f5f9;
-    }
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: #2563eb;
-      box-shadow: 0 0 0 2px rgba(37,99,235,0.2);
-    }
-
-    /* Футер */
-    .footer {
-      margin-top: 70px;
-      padding: 32px 0;
-      border-top: 1px solid rgba(0,0,0,0.05);
-      text-align: center;
-      color: #5b6e8c;
-    }
-    body.dark .footer {
-      border-top-color: #1e293b;
-    }
-
-    /* Мобильные стили */
-    @media (max-width: 880px) {
-      .hero {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-      .photo-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .nav-links {
-        display: none;
-      }
-      .nav-links.mobile-open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 85px;
-        left: 0;
-        right: 0;
-        background: white;
-        padding: 24px;
-        border-radius: 28px;
-        box-shadow: 0 20px 35px rgba(0,0,0,0.1);
-        z-index: 100;
-        gap: 20px;
-        align-items: center;
-      }
-      body.dark .nav-links.mobile-open {
-        background: #0f172a;
-      }
-      .burger {
-        display: block;
-      }
-    }
-
-    @media (max-width: 580px) {
-      .photo-grid {
-        grid-template-columns: 1fr;
-      }
-      .container {
-        padding: 0 16px;
-      }
-      .hero-content h2 {
-        font-size: 2rem;
-      }
-    }
-
-    /* для заглушек фото */
-    .placeholder-img {
-      background: linear-gradient(145deg, #e2e8f0, #cbd5e1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #3b82f6;
-      font-weight: 600;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Никита — Инженер-разработчик БПЛА · CAD · Computer Vision</title>
+<meta name="description" content="Портфолио Никиты (nikitosrus01) — инженера-разработчика БПЛА: CAD, компьютерное зрение, навигация без GPS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <div class="logo-area">
-        <div class="avatar-icon">N</div>
-        <div class="logo-text">
-          <h1>Никита Голубицкий</h1>
-          <p>Разработчик БПЛА</p>
-        </div>
-      </div>
-      <div class="burger" id="burgerBtn">
-        <i class="fas fa-bars"></i>
-      </div>
-      <nav class="nav-links" id="navLinks">
-        <a href="#projects">Проекты</a>
-        <a href="#achievements">Достижения</a>
-        <a href="#partners">Партнёры</a>
-        <a href="#contact">Контакты</a>
-        <button class="theme-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
-      </nav>
-    </header>
 
-    <!-- Герой-секция -->
-    <section class="hero">
-      <div class="hero-content">
-        <h2>Разработка <span class="highlight">беспилотных систем</span> для промышленности и науки</h2>
-        <p>Проектирую, собираю и программирую БПЛА мультироторного типа. Участник всероссийских конкурсов и хакатонов, партнёр крупных предприятий.</p>
-        <div class="btn-group">
-          <a href="#projects" class="btn-primary">Смотреть проекты</a>
-          <a href="#contact" class="btn-outline">Связаться</a>
-        </div>
-      </div>
-      <div class="hero-card">
-        <h3>Кто я?</h3>
-        <p>Ученик 10 класса школы №56 г. Челябинска. Занимаюсь разработкой БПЛА с 2023 года. Специализируюсь на интеграции нейросетей, компьютерного зрения и систем навигации без GPS для мониторинга карьеров и труднодоступных объектов.</p>
-        <div class="tags" style="margin-top: 20px;">
-          <span class="tag">ArduPilot</span>
-          <span class="tag">YOLO</span>
-          <span class="tag">Python / Flask</span>
-          <span class="tag">Agisoft Metashape</span>
-        </div>
-      </div>
-    </section>
+<a class="skip-link" href="#main">Перейти к содержимому</a>
 
-    <!-- Проекты -->
-    <section id="projects">
-      <h2 class="section-title">Мои проекты</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-icon"><i class="fas fa-cloud-sun"></i></div>
-          <h3>Метеодрон для ООО "Cursis"</h3>
-          <p>Разработка и программирование БПЛА для автоматического сбора метеоданных. Полётный контроллер ArduPilot, интеграция с датчиками.</p>
-          <div class="tags"><span class="tag">ArduPilot</span><span class="tag">MQTT</span><span class="tag">В разработке</span></div>
-          <div class="project-status">✅ Завершён, испытания пройдены</div>
-        </div>
-        <div class="project-card">
-          <div class="project-icon"><i class="fas fa-hard-hat"></i></div>
-          <h3>Гидрогеомониторинг для ГОК «Томинский»</h3>
-          <p>Сборка дрона для геомагнитной съёмки с последующим нахождением подземных вод.</p>
-          <div class="tags"><span class="tag">Ручное управление</span><span class="tag">Betaflight</span><span class="tag">Первый проект</span></div>
-          <div class="project-status">✅ Завершён, испытания пройдены</div>
-        </div>
-        <div class="project-card">
-          <div class="project-icon"><i class="fas fa-brain"></i></div>
-          <h3>ИИ-навигация (ПАО «ОАК»)</h3>
-          <p>Разработка алгоритма навигации без GPS на основе компьютерного зрения. Обучение модели, создание 3D-моделей в CAD, испытания на симуляторе Gazebo.</p>
-          <div class="tags"><span class="tag">YOLO</span><span class="tag">ROS/Gazebo</span><span class="tag">Python</span></div>
-          <div class="project-status">✅ Завершён, испытания пройдены</div>
-        </div>
-        <div class="project-card">
-          <div class="project-icon"><i class="fas fa-mountain"></i></div>
-          <h3>«Карьерист» - БПЛА для автоматического мониторинга карьеров</h3>
-          <p>Прототип мультироторного дрона с тепловизионной и RGB-камерами, нейросетью YOLO26 для поиска трещин и алгоритмом статистического выявления тепловых аномалий. Веб-сервис для визуализации, работа без GPS. Партнёрство с ГОК «Томинский».</p>
-          <div class="tags"><span class="tag">YOLO26</span><span class="tag">Raspberry Pi</span><span class="tag">Thermal Camera</span><span class="tag">Flask</span><span class="tag">Agisoft</span></div>
-          <div class="project-status">🚁 Прототип испытан, пройдя испытания в карьерной местности</div>
-        </div>
-      </div>
-    </section>
+<header class="site-header" id="top">
+  <div class="header-inner">
+    <a href="#top" class="logo">
+      <span class="logo-mark">N_</span>
+      <span class="logo-text">nikitosrus01</span>
+    </a>
+    <nav class="main-nav" aria-label="Основная навигация">
+      <a href="#about"><span class="nav-num">01</span>Обо мне</a>
+      <a href="#projects"><span class="nav-num">02</span>Проекты</a>
+      <a href="#achievements"><span class="nav-num">03</span>Достижения</a>
+      <a href="#sit"><span class="nav-num">04</span>S.I.T</a>
+      <a href="#contact"><span class="nav-num">05</span>Контакты</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-    <!-- Достижения и фотографии -->
-    <section id="achievements">
-      <h2 class="section-title">🏆 Достижения и хакатоны</h2>
-      <div class="achievement-block">
-        <div class="achievement-title">Большие вызовы 2025/2026</div>
-        <p>Призёр направления «Беспилотные и логистические системы». Проект по проведению метеорологических исследованний.</p>
-        <div class="photo-grid">
-          <img src="bv.jpg" alt="Большие вызовы" onerror="this.src='https://placehold.co/400x300?text=Фото+БВ'">
-          <img src="bv1.jpg" alt="Большие вызовы 2" onerror="this.src='https://placehold.co/400x300?text=БВ+2'">
-          <img src="bv.png" alt="сертификат" onerror="this.src='https://placehold.co/400x300?text=БВ+3'">
-        </div>
-      </div>
-      <div class="achievement-block">
-        <div class="achievement-title">Инженерные кадры России</div>
-        <p>2 абсолютное место на всероссийском этапе. Разработка БПЛА для промышленности.</p>
-        <div class="photo-grid">
-          <img src="ikr.jpg" alt="ИКР" onerror="this.src='https://placehold.co/400x300?text=ИКР'">
-          <img src="ikr1.jpg" alt="ИКР2" onerror="this.src='https://placehold.co/400x300?text=ИКР2'">
-          <img src="ikr2.jpg" alt="награждение" onerror="this.src='https://placehold.co/400x300?text=ИКР3'">
-        </div>
-      </div>
-      <div class="achievement-block">
-        <div class="achievement-title">Архипелаг 2024 / 2025</div>
-        <p>2 место в гонке дронов (класс 75мм), финалист интенсива. Опыт командной работы и конструктива.</p>
-        <div class="photo-grid">
-          <img src="arh.jpg" alt="Архипелаг" onerror="this.src='https://placehold.co/400x300?text=Архипелаг'">
-          <img src="arh1.jpg" alt="Архипелаг2" onerror="this.src='https://placehold.co/400x300?text=Архипелаг2'">
-          <img src="arh2.jpg" alt="соревнования" onerror="this.src='https://placehold.co/400x300?text=Архипелаг3'">
-        </div>
-      </div>
-      <div class="achievement-block">
-        <div class="achievement-title">Соколиная охота (Всероссийский чемпионат)</div>
-        <p>1 место в личном зачёте, 3 место в командном. Пилотирование и настройка дронов.</p>
-        <div class="photo-grid">
-          <img src="ul.jpg" alt="Соколиная охота" onerror="this.src='https://placehold.co/400x300?text=Соколиная+охота'">
-          <img src="ul2.jpg" alt="награда" onerror="this.src='https://placehold.co/400x300?text=ul2'">
-          <img src="ul1.jpg" alt="команда" onerror="this.src='https://placehold.co/400x300?text=ul1'">
-        </div>
-      </div>
-      <div class="achievement-block">
-        <div class="achievement-title">Проектная программа «Большие вызовы» (кейс "ПАО" ОАК)</div>
-        <p>Решение кейса по автономной навигации БАС. Работа в команде инженеров.</p>
-        <div class="photo-grid">
-          <img src="sm.webp" alt="ОАК" onerror="this.src='https://placehold.co/400x300?text=ОАК'">
-          <img src="okak.png" alt="презентация" onerror="this.src='https://placehold.co/400x300?text=ОАК2'">
-          <img src="mai.jpg" alt="МАИ" onerror="this.src='https://placehold.co/400x300?text=МАИ'">
-        </div>
-      </div>
-    </section>
+<main id="main">
 
-    <!-- Благодарности / партнёры -->
-    <section id="partners">
-      <h2 class="section-title">🤝 Партнёры и наставники</h2>
-      <div class="thanks-grid">
-        <div class="thanks-card">
-          <img src="https://placehold.co/80x80?text=РМК" alt="РМК лого">
-          <div class="thanks-info">
-            <h4>ГОК Томинский (РМК)</h4>
-            <p>Партнёр для испытаний дрона геомониторинга</p>
-            <div class="thanks-links"><a href="#">Сотрудничество</a></div>
-          </div>
-        </div>
-        <div class="thanks-card">
-          <img src="https://placehold.co/80x80?text=ОАК" alt="ОАК">
-          <div class="thanks-info">
-            <h4>ПАО «ОАК»</h4>
-            <p>Разработка ИИ-навигации без GPS</p>
-            <div class="thanks-links"><a href="#">Кейс «Большие вызовы»</a></div>
-          </div>
-        </div>
-        <div class="thanks-card">
-          <img src="https://placehold.co/80x80?text=Кванториум" alt="Кванториум">
-          <div class="thanks-info">
-            <h4>Кванториум Челябинск</h4>
-            <p>Научный руководитель Хужин А.Р.</p>
-            <div class="thanks-links"><a href="#">База для разработок</a></div>
-          </div>
-        </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow reveal">Инженер-разработчик БПЛА · CAD · Computer Vision</p>
+      <h1 class="hero-title reveal">
+        Привет, я Никита.<br>
+        <em>Строю БПЛА, которые видят.</em>
+      </h1>
+      <p class="hero-desc reveal">
+        Ученик 10 класса школы №56 г. Челябинска. Разрабатываю беспилотные летательные
+        аппараты с 2023 года — интеграция нейросетей, компьютерного зрения и навигации
+        без GPS для мониторинга карьеров и труднодоступных объектов.
+      </p>
+      <div class="hero-cta reveal">
+        <a href="#projects" class="btn btn-primary">Смотреть проекты ↘</a>
+        <a href="mailto:nikitosrus01@gmail.com" class="btn btn-ghost">Написать мне</a>
       </div>
-    </section>
+    </div>
 
-    <!-- Контакты -->
-    <section id="contact">
-      <h2 class="section-title">📬 Связаться со мной</h2>
-      <div class="contact-form">
-        <form onsubmit="event.preventDefault(); alert('Спасибо! Но для связи лучше написать на почту nikitosrus01@gmail.com');">
-          <div class="form-group"><input type="text" placeholder="Ваше имя" required></div>
-          <div class="form-group"><input type="email" placeholder="Email" required></div>
-          <div class="form-group"><textarea rows="4" placeholder="Сообщение о сотрудничестве"></textarea></div>
-          <button type="submit" class="btn-primary" style="border:none; cursor:pointer;">Отправить запрос</button>
-          <p style="margin-top: 16px; font-size: 0.85rem;">Или пишите напрямую: <strong>nikitosrus01@gmail.com</strong> | GitHub: <a href="https://github.com/nikitosrus01" target="_blank">github.com/nikitosrus01</a></p>
-        </form>
+    <div class="hero-terminal reveal" aria-hidden="true">
+      <div class="terminal-bar">
+        <span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span>
+        <span class="terminal-file">uav_core.py</span>
       </div>
-    </section>
+      <div class="terminal-body">
+        <p><span class="t-prompt">root@nikitosrus01</span><span class="t-sep">:~$</span> ./init --modules=nav,cv,thermal</p>
+        <p class="t-out">&gt; загрузка модуля навигации без GPS... <span class="t-ok">OK</span></p>
+        <p class="t-out">&gt; подключение YOLO26 / тепловизор... <span class="t-ok">OK</span></p>
+        <p class="t-out">&gt; партнёр: ГОК «Томинский»</p>
+        <p class="t-status">status: <span class="t-accent">испытания прототипа</span><span class="cursor">_</span></p>
+      </div>
+    </div>
+  </section>
 
-    <footer class="footer">
-      <p>© 2026 Никита Голубицкий.</p>
-    </footer>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>SolidWorks<i>✦</i>NX<i>✦</i>Femap<i>✦</i>Python<i>✦</i>JavaScript<i>✦</i>ArduPilot<i>✦</i>Betaflight<i>✦</i>ROS/Gazebo<i>✦</i>YOLO<i>✦</i>OpenCV<i>✦</i>Flask<i>✦</i>MQTT<i>✦</i>Agisoft Metashape<i>✦</i>Raspberry Pi<i>✦</i></span>
+      <span>SolidWorks<i>✦</i>NX<i>✦</i>Femap<i>✦</i>Python<i>✦</i>JavaScript<i>✦</i>ArduPilot<i>✦</i>Betaflight<i>✦</i>ROS/Gazebo<i>✦</i>YOLO<i>✦</i>OpenCV<i>✦</i>Flask<i>✦</i>MQTT<i>✦</i>Agisoft Metashape<i>✦</i>Raspberry Pi<i>✦</i></span>
+    </div>
   </div>
 
-  <script>
-    // Тёмная тема
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      const icon = themeToggle.querySelector('i');
-      if (document.body.classList.contains('dark')) {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-      } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-      }
-    });
+  <!-- 01 О СЕБЕ -->
+  <section class="section" id="about">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal"><span class="section-num">01</span>Коротко обо мне</p>
+      <h2 class="section-title reveal">Разработка автономных систем <em>для труднодоступных объектов.</em></h2>
 
-    // Мобильное меню
-    const burger = document.getElementById('burgerBtn');
-    const nav = document.getElementById('navLinks');
-    burger.addEventListener('click', () => {
-      nav.classList.toggle('mobile-open');
-    });
-    // Закрывать меню после клика по ссылке
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('mobile-open');
-      });
-    });
-    // Плавный скролл
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-  </script>
+      <div class="about-grid">
+        <div class="about-card reveal">
+          <p class="card-label">База разработок</p>
+          <h3>Кванториум Челябинск</h3>
+          <p class="card-text">Научный руководитель — Хужин А.Р. Здесь собираю и тестирую прототипы БПЛА, от планера до систем навигации без GPS.</p>
+          <span class="card-tag-mono">с 2023 года</span>
+        </div>
+        <div class="about-card reveal">
+          <p class="card-label">Специализация</p>
+          <h3>CV · навигация · мониторинг</h3>
+          <p class="card-text">Интеграция нейросетей и компьютерного зрения в БПЛА для мониторинга карьеров, геосъёмки и работы в зонах без спутниковой навигации.</p>
+          <span class="card-tag-mono">10 класс · школа №56, Челябинск</span>
+        </div>
+      </div>
+
+      <div class="stack-block reveal">
+        <p class="card-label">Стек</p>
+        <div class="stack-grid">
+          <div class="stack-group">
+            <h4>CAD / инженерия</h4>
+            <div class="pill-row">
+              <span class="pill">SolidWorks</span><span class="pill">NX</span><span class="pill">Femap</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <h4>Языки / веб</h4>
+            <div class="pill-row">
+              <span class="pill">Python</span><span class="pill">JavaScript</span><span class="pill">HTML</span><span class="pill">CSS</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <h4>БПЛА / Computer Vision</h4>
+            <div class="pill-row">
+              <span class="pill">ArduPilot</span><span class="pill">Betaflight</span><span class="pill">ROS/Gazebo</span>
+              <span class="pill">YOLO</span><span class="pill">OpenCV</span><span class="pill">Flask</span>
+              <span class="pill">MQTT</span><span class="pill">Agisoft Metashape</span><span class="pill">Raspberry Pi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 ПРОЕКТЫ -->
+  <section class="section" id="projects">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal"><span class="section-num">02</span>Избранные проекты</p>
+      <h2 class="section-title reveal">Личные и <em>партнёрские разработки БПЛА.</em></h2>
+
+      <div class="project-grid">
+
+        <article class="project-card reveal">
+          <div class="project-head">
+            <span class="project-index">01</span>
+            <span class="status-badge status-proto">прототип испытан</span>
+          </div>
+          <h3>«Карьерист»</h3>
+          <p class="project-desc">
+            БПЛА для автоматического мониторинга карьеров: тепловизионная и RGB-камеры,
+            нейросеть YOLO26 для поиска трещин, алгоритм выявления тепловых аномалий,
+            веб-сервис визуализации. Работает без GPS. Партнёр — ГОК «Томинский».
+          </p>
+          <div class="pill-row mono">
+            <span class="pill">YOLO26</span><span class="pill">Raspberry Pi</span>
+            <span class="pill">Thermal Camera</span><span class="pill">Flask</span><span class="pill">Agisoft</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-head">
+            <span class="project-index">02</span>
+            <span class="status-badge status-done">завершён · испытания пройдены</span>
+          </div>
+          <h3>ИИ-навигация</h3>
+          <p class="project-eyebrow-small">ПАО «ОАК»</p>
+          <p class="project-desc">
+            Навигация без GPS на основе компьютерного зрения: обучение модели,
+            проектирование 3D-моделей в CAD, испытания в симуляторе Gazebo.
+          </p>
+          <div class="pill-row mono">
+            <span class="pill">YOLO</span><span class="pill">ROS/Gazebo</span><span class="pill">Python</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-head">
+            <span class="project-index">03</span>
+            <span class="status-badge status-done">завершён · испытания пройдены</span>
+          </div>
+          <h3>Метеодрон</h3>
+          <p class="project-eyebrow-small">ООО «Cursis»</p>
+          <p class="project-desc">
+            БПЛА для автоматического сбора метеоданных: полётный контроллер ArduPilot,
+            интеграция и калибровка датчиков в реальных условиях.
+          </p>
+          <div class="pill-row mono">
+            <span class="pill">ArduPilot</span><span class="pill">MQTT</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-head">
+            <span class="project-index">04</span>
+            <span class="status-badge status-done">завершён</span>
+          </div>
+          <h3>Гидрогеомониторинг</h3>
+          <p class="project-eyebrow-small">ГОК «Томинский»</p>
+          <p class="project-desc">
+            Дрон для геомагнитной съёмки и поиска подземных вод на территории карьера,
+            управляется вручную для точного облёта участков.
+          </p>
+          <div class="pill-row mono">
+            <span class="pill">Betaflight</span><span class="pill">ручное управление</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 ДОСТИЖЕНИЯ -->
+  <section class="section" id="achievements">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal"><span class="section-num">03</span>Соревнования и достижения</p>
+      <h2 class="section-title reveal">Опыт участия в <em>инженерных соревнованиях.</em></h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <span class="timeline-year">2026</span>
+          <span class="timeline-status">призёр</span>
+          <h3>«Большие вызовы» 2025/2026</h3>
+          <p>Призёр направления «Беспилотные и логистические системы».</p>
+        </div>
+
+        <div class="timeline-item reveal">
+          <span class="timeline-year">2026</span>
+          <span class="timeline-status">кейс</span>
+          <h3>Кейс ПАО «ОАК»</h3>
+          <p>В рамках «Больших вызовов» — разработка автономной навигации БАС.</p>
+        </div>
+
+        <div class="timeline-item reveal">
+          <span class="timeline-year">2025</span>
+          <span class="timeline-status">2 место</span>
+          <h3>«Инженерные кадры России»</h3>
+          <p>2 место на всероссийском этапе конкурса.</p>
+        </div>
+
+        <div class="timeline-item reveal">
+          <span class="timeline-year">2025</span>
+          <span class="timeline-status">1 / 3 место</span>
+          <h3>«Соколиная охота»</h3>
+          <p>Всероссийский чемпионат: 1 место в личном зачёте, 3 место в командном.</p>
+        </div>
+
+        <div class="timeline-item reveal">
+          <span class="timeline-year">2024/2025</span>
+          <span class="timeline-status">2 место</span>
+          <h3>«Архипелаг»</h3>
+          <p>2 место в гонке дронов (класс 75 мм), финалист интенсива.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 S.I.T -->
+  <section class="section" id="sit">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal"><span class="section-num">04</span>Личный / командный проект</p>
+      <h2 class="section-title reveal">Участвую в развитии <em>проекта S.I.T.</em></h2>
+
+      <div class="sit-block reveal">
+        <div class="sit-text">
+          <p>
+            S.I.T — технологический проект, в разработке которого я участвую наравне с
+            другими инженерами: команда создаёт инструменты для разработчиков,
+            проектирует электронные устройства и собирает робототехнические системы.
+          </p>
+          <p>
+            Наработки команды проверяются на инженерных соревнованиях и хакатонах —
+            в том числе часть моих собственных решений по навигации и компьютерному
+            зрению для БПЛА выросла именно из этой работы.
+          </p>
+          <div class="pill-row mono">
+            <span class="pill">Developer tools</span><span class="pill">Devices</span>
+            <span class="pill">Robotics</span><span class="pill">Competitions</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 КОНТАКТЫ -->
+  <section class="section" id="contact">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal"><span class="section-num">05</span>Контакты</p>
+      <h2 class="section-title reveal">Есть интересная задача? <em>Давайте обсудим.</em></h2>
+      <p class="contact-lead reveal">Открыт к стажировкам, совместным разработкам и инженерным соревнованиям.</p>
+
+      <div class="contact-grid">
+        <a class="contact-card reveal" href="mailto:nikitosrus01@gmail.com">
+          <span class="card-label">Email</span>
+          <h3>nikitosrus01@gmail.com</h3>
+          <span class="contact-arrow">↗</span>
+        </a>
+        <a class="contact-card reveal" href="https://t.me/nikitosrus01" target="_blank" rel="noopener">
+          <span class="card-label">Telegram</span>
+          <h3>@nikitosrus01</h3>
+          <span class="contact-arrow">↗</span>
+        </a>
+        <a class="contact-card reveal" href="https://github.com/nikitosrus01" target="_blank" rel="noopener">
+          <span class="card-label">GitHub</span>
+          <h3>nikitosrus01</h3>
+          <span class="contact-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Сделано с вниманием к деталям · 2026</p>
+  <a href="#top" class="back-top">Наверх ↑</a>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
