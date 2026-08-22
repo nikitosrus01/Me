@@ -22,10 +22,12 @@
     </a>
     <nav class="main-nav" aria-label="Основная навигация">
       <a href="#about"><span class="nav-num">01</span>Обо мне</a>
-      <a href="#projects"><span class="nav-num">02</span>Проекты</a>
-      <a href="#achievements"><span class="nav-num">03</span>Достижения</a>
-      <a href="#sit"><span class="nav-num">04</span>S.I.T</a>
-      <a href="#contact"><span class="nav-num">05</span>Контакты</a>
+      <a href="#stack"><span class="nav-num">02</span>Стек</a>
+      <a href="#projects"><span class="nav-num">03</span>Проекты</a>
+      <a href="#achievements"><span class="nav-num">04</span>Достижения</a>
+      <a href="#partners"><span class="nav-num">05</span>Партнёры</a>
+      <a href="#sit"><span class="nav-num">06</span>S.I.T</a>
+      <a href="#contact"><span class="nav-num">07</span>Контакты</a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -71,8 +73,8 @@
 
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
-      <span>SolidWorks<i>✦</i>NX<i>✦</i>Femap<i>✦</i>Python<i>✦</i>JavaScript<i>✦</i>ArduPilot<i>✦</i>Betaflight<i>✦</i>ROS/Gazebo<i>✦</i>YOLO<i>✦</i>OpenCV<i>✦</i>Flask<i>✦</i>MQTT<i>✦</i>Agisoft Metashape<i>✦</i>Raspberry Pi<i>✦</i></span>
-      <span>SolidWorks<i>✦</i>NX<i>✦</i>Femap<i>✦</i>Python<i>✦</i>JavaScript<i>✦</i>ArduPilot<i>✦</i>Betaflight<i>✦</i>ROS/Gazebo<i>✦</i>YOLO<i>✦</i>OpenCV<i>✦</i>Flask<i>✦</i>MQTT<i>✦</i>Agisoft Metashape<i>✦</i>Raspberry Pi<i>✦</i></span>
+      <span>SolidWorks<i>✦</i>NX<i>✦</i>Femap<i>✦</i>ArduPilot<i>✦</i>Betaflight<i>✦</i>ROS/Gazebo<i>✦</i>YOLO<i>✦</i>OpenCV<i>✦</i>Python<i>✦</i>JavaScript<i>✦</i>Flask<i>✦</i>MQTT<i>✦</i>Agisoft Metashape<i>✦</i>Raspberry Pi<i>✦</i></span>
+      <span>SolidWorks<i>✦</i>NX<i>✦</i>Femap<i>✦</i>ArduPilot<i>✦</i>Betaflight<i>✦</i>ROS/Gazebo<i>✦</i>YOLO<i>✦</i>OpenCV<i>✦</i>Python<i>✦</i>JavaScript<i>✦</i>Flask<i>✦</i>MQTT<i>✦</i>Agisoft Metashape<i>✦</i>Raspberry Pi<i>✦</i></span>
     </div>
   </div>
 
@@ -82,42 +84,35 @@
       <p class="section-eyebrow reveal"><span class="section-num">01</span>Коротко обо мне</p>
       <h2 class="section-title reveal">Разработка автономных систем <em>для труднодоступных объектов.</em></h2>
 
-      <div class="about-grid">
-        <div class="about-card reveal">
-          <p class="card-label">База разработок</p>
-          <h3>Кванториум Челябинск</h3>
-          <p class="card-text">Научный руководитель — Хужин А.Р. Здесь собираю и тестирую прототипы БПЛА, от планера до систем навигации без GPS.</p>
-          <span class="card-tag-mono">с 2023 года</span>
+      <div class="about-layout">
+        <div class="about-photo-wrap reveal">
+          <img class="about-photo" src="photo.jpg" alt="Фото Никиты, инженера-разработчика БПЛА">
         </div>
-        <div class="about-card reveal">
-          <p class="card-label">Специализация</p>
-          <h3>CV · навигация · мониторинг</h3>
-          <p class="card-text">Интеграция нейросетей и компьютерного зрения в БПЛА для мониторинга карьеров, геосъёмки и работы в зонах без спутниковой навигации.</p>
-          <span class="card-tag-mono">10 класс · школа №56, Челябинск</span>
-        </div>
-      </div>
 
-      <div class="stack-block reveal">
-        <p class="card-label">Стек</p>
-        <div class="stack-grid">
-          <div class="stack-group">
-            <h4>CAD / инженерия</h4>
-            <div class="pill-row">
-              <span class="pill">SolidWorks</span><span class="pill">NX</span><span class="pill">Femap</span>
+        <div class="about-content reveal">
+          <p class="about-text">
+            Разрабатываю БПЛА с 2023 года: от планера до систем навигации без GPS.
+            Специализируюсь на интеграции нейросетей, компьютерного зрения и автономных
+            алгоритмов для мониторинга карьеров и труднодоступных объектов. Базируюсь
+            в Кванториуме Челябинск, научный руководитель — Хужин А.Р.
+          </p>
+
+          <div class="fact-badges">
+            <div class="fact-badge">
+              <span class="fact-label">Класс</span>
+              <span class="fact-value">10 класс · школа №56</span>
             </div>
-          </div>
-          <div class="stack-group">
-            <h4>Языки / веб</h4>
-            <div class="pill-row">
-              <span class="pill">Python</span><span class="pill">JavaScript</span><span class="pill">HTML</span><span class="pill">CSS</span>
+            <div class="fact-badge">
+              <span class="fact-label">Город</span>
+              <span class="fact-value">Челябинск</span>
             </div>
-          </div>
-          <div class="stack-group">
-            <h4>БПЛА / Computer Vision</h4>
-            <div class="pill-row">
-              <span class="pill">ArduPilot</span><span class="pill">Betaflight</span><span class="pill">ROS/Gazebo</span>
-              <span class="pill">YOLO</span><span class="pill">OpenCV</span><span class="pill">Flask</span>
-              <span class="pill">MQTT</span><span class="pill">Agisoft Metashape</span><span class="pill">Raspberry Pi</span>
+            <div class="fact-badge">
+              <span class="fact-label">Специализация</span>
+              <span class="fact-value">БПЛА · CV · CAD</span>
+            </div>
+            <div class="fact-badge">
+              <span class="fact-label">В разработке с</span>
+              <span class="fact-value">2023 года</span>
             </div>
           </div>
         </div>
@@ -125,10 +120,58 @@
     </div>
   </section>
 
-  <!-- 02 ПРОЕКТЫ -->
+  <!-- 02 СТЕК -->
+  <section class="section" id="stack">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal"><span class="section-num">02</span>Стек и инструменты</p>
+      <h2 class="section-title reveal">Инструменты, на которых <em>строятся мои проекты.</em></h2>
+
+      <div class="stack-cards-grid">
+
+        <div class="stack-card reveal">
+          <h3><span class="stack-icon">🛠</span>CAD / Инженерия</h3>
+          <div class="pill-row">
+            <span class="pill">SolidWorks</span><span class="pill">NX</span><span class="pill">Femap</span>
+          </div>
+        </div>
+
+        <div class="stack-card reveal">
+          <h3><span class="stack-icon">💻</span>Языки / Веб</h3>
+          <div class="pill-row">
+            <span class="pill">Python</span><span class="pill">JavaScript</span><span class="pill">HTML</span><span class="pill">CSS</span>
+          </div>
+        </div>
+
+        <div class="stack-card reveal">
+          <h3><span class="stack-icon">🚁</span>БПЛА / Embedded</h3>
+          <div class="pill-row">
+            <span class="pill">ArduPilot</span><span class="pill">Betaflight</span><span class="pill">ROS/Gazebo</span>
+            <span class="pill">Raspberry Pi</span><span class="pill">MQTT</span>
+          </div>
+        </div>
+
+        <div class="stack-card reveal">
+          <h3><span class="stack-icon">🤖</span>AI / CV</h3>
+          <div class="pill-row">
+            <span class="pill">YOLO</span><span class="pill">OpenCV</span><span class="pill">Agisoft Metashape</span>
+          </div>
+        </div>
+
+        <div class="stack-card reveal">
+          <h3><span class="stack-icon">⚙️</span>Инструменты</h3>
+          <div class="pill-row">
+            <span class="pill">Flask</span><span class="pill">Git</span><span class="pill">GitHub Pages</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 ПРОЕКТЫ -->
   <section class="section" id="projects">
     <div class="section-inner">
-      <p class="section-eyebrow reveal"><span class="section-num">02</span>Избранные проекты</p>
+      <p class="section-eyebrow reveal"><span class="section-num">03</span>Избранные проекты</p>
       <h2 class="section-title reveal">Личные и <em>партнёрские разработки БПЛА.</em></h2>
 
       <div class="project-grid">
@@ -202,45 +245,50 @@
     </div>
   </section>
 
-  <!-- 03 ДОСТИЖЕНИЯ -->
+  <!-- 04 ДОСТИЖЕНИЯ -->
   <section class="section" id="achievements">
     <div class="section-inner">
-      <p class="section-eyebrow reveal"><span class="section-num">03</span>Соревнования и достижения</p>
+      <p class="section-eyebrow reveal"><span class="section-num">04</span>Соревнования и достижения</p>
       <h2 class="section-title reveal">Опыт участия в <em>инженерных соревнованиях.</em></h2>
 
-      <div class="timeline">
+      <div class="timeline-vertical">
 
-        <div class="timeline-item reveal">
-          <span class="timeline-year">2026</span>
-          <span class="timeline-status">призёр</span>
+        <div class="timeline-card reveal">
+          <span class="timeline-marker"></span>
+          <span class="timeline-period">2025/2026</span>
+          <span class="result-badge badge-accent">🏆 Призёр</span>
           <h3>«Большие вызовы» 2025/2026</h3>
           <p>Призёр направления «Беспилотные и логистические системы».</p>
         </div>
 
-        <div class="timeline-item reveal">
-          <span class="timeline-year">2026</span>
-          <span class="timeline-status">кейс</span>
+        <div class="timeline-card reveal">
+          <span class="timeline-marker"></span>
+          <span class="timeline-period">2026</span>
+          <span class="result-badge badge-accent">🚀 Кейс реализован</span>
           <h3>Кейс ПАО «ОАК»</h3>
           <p>В рамках «Больших вызовов» — разработка автономной навигации БАС.</p>
         </div>
 
-        <div class="timeline-item reveal">
-          <span class="timeline-year">2025</span>
-          <span class="timeline-status">2 место</span>
+        <div class="timeline-card reveal">
+          <span class="timeline-marker"></span>
+          <span class="timeline-period">2025</span>
+          <span class="result-badge badge-silver">🥈 2 место</span>
           <h3>«Инженерные кадры России»</h3>
           <p>2 место на всероссийском этапе конкурса.</p>
         </div>
 
-        <div class="timeline-item reveal">
-          <span class="timeline-year">2025</span>
-          <span class="timeline-status">1 / 3 место</span>
+        <div class="timeline-card reveal">
+          <span class="timeline-marker"></span>
+          <span class="timeline-period">2025</span>
+          <span class="result-badge badge-gold">🥇 1 место</span>
           <h3>«Соколиная охота»</h3>
           <p>Всероссийский чемпионат: 1 место в личном зачёте, 3 место в командном.</p>
         </div>
 
-        <div class="timeline-item reveal">
-          <span class="timeline-year">2024/2025</span>
-          <span class="timeline-status">2 место</span>
+        <div class="timeline-card reveal">
+          <span class="timeline-marker"></span>
+          <span class="timeline-period">2024/2025</span>
+          <span class="result-badge badge-silver">🥈 2 место</span>
           <h3>«Архипелаг»</h3>
           <p>2 место в гонке дронов (класс 75 мм), финалист интенсива.</p>
         </div>
@@ -249,10 +297,37 @@
     </div>
   </section>
 
-  <!-- 04 S.I.T -->
+  <!-- 05 ПАРТНЁРЫ -->
+  <section class="section" id="partners">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal"><span class="section-num">05</span>Партнёры и наставники</p>
+      <h2 class="section-title reveal">Организации, с которыми <em>я работал и учился.</em></h2>
+
+      <div class="partner-grid">
+
+        <article class="partner-card reveal">
+          <h3>ГОК «Томинский» (РМК)</h3>
+          <p class="partner-desc">Партнёр для испытаний дрона геомониторинга и гидрогеологической разведки на территории карьера.</p>
+        </article>
+
+        <article class="partner-card reveal">
+          <h3>ПАО «ОАК»</h3>
+          <p class="partner-desc">Разработка ИИ-навигации без GPS в рамках кейса «Большие вызовы».</p>
+        </article>
+
+        <article class="partner-card reveal">
+          <h3>Кванториум Челябинск</h3>
+          <p class="partner-desc">Научный руководитель — Хужин А.Р. База для разработки и испытаний прототипов БПЛА.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 S.I.T -->
   <section class="section" id="sit">
     <div class="section-inner">
-      <p class="section-eyebrow reveal"><span class="section-num">04</span>Личный / командный проект</p>
+      <p class="section-eyebrow reveal"><span class="section-num">06</span>Личный / командный проект</p>
       <h2 class="section-title reveal">Участвую в развитии <em>проекта S.I.T.</em></h2>
 
       <div class="sit-block reveal">
@@ -276,10 +351,10 @@
     </div>
   </section>
 
-  <!-- 05 КОНТАКТЫ -->
+  <!-- 07 КОНТАКТЫ -->
   <section class="section" id="contact">
     <div class="section-inner">
-      <p class="section-eyebrow reveal"><span class="section-num">05</span>Контакты</p>
+      <p class="section-eyebrow reveal"><span class="section-num">07</span>Контакты</p>
       <h2 class="section-title reveal">Есть интересная задача? <em>Давайте обсудим.</em></h2>
       <p class="contact-lead reveal">Открыт к стажировкам, совместным разработкам и инженерным соревнованиям.</p>
 
@@ -306,7 +381,7 @@
 </main>
 
 <footer class="site-footer">
-  <p>Сделано с вниманием к деталям · 2026</p>
+  <p>© 2026 nikitosrus01 · Built with ❤️</p>
   <a href="#top" class="back-top">Наверх ↑</a>
 </footer>
 
