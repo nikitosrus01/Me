@@ -1,265 +1,499 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Никита · nikitosrus01 — Инженер-разработчик БПЛА</title>
-  <meta name="description" content="Никита — инженер-разработчик БПЛА. CAD, computer vision, автономная навигация без GPS. Челябинск, Кванториум.">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NIKITOSRUS01 — Инженер-разработчик БПЛА</title>
+<meta name="description" content="Портфолио инженера-разработчика БПЛА: CAD, компьютерное зрение, автономная навигация без GPS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
-<body data-theme="dark">
+<body>
 
-<nav class="nav">
-  <a href="#hero" class="nav-logo">
-    <span class="logo-forgesoft">forgesoft</span>
-    <span class="logo-sub mono">/ uav_lab</span>
-  </a>
+<!-- Scanline / grain overlay -->
+<div class="hud-overlay" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
 
-  <div class="nav-links mono">
-    <a href="#hero"><b>01</b> ИНФО</a>
-    <a href="#stack"><b>02</b> СТЕК</a>
-    <a href="#projects"><b>03</b> ПРОЕКТЫ</a>
-    <a href="#timeline"><b>04</b> ОПЫТ</a>
-    <a href="#sit"><b>05</b> S.I.T</a>
-    <a href="#contact"><b>06</b> КОНТАКТЫ</a>
+<!-- Copy toast -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <span class="toast-icon">✓</span>
+  <span>СКОПИРОВАНО В БУФЕР</span>
+</div>
+
+<!-- ================= HEADER ================= -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="#top" class="logo">
+      <span class="logo-mark">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <span class="logo-glyph">FS</span>
+      </span>
+      <span class="logo-text">
+        <span class="logo-line1">forgesoft</span>
+        <span class="logo-line2">uav_lab</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="#info" class="nav-link" data-nav="info"><em>01</em> ИНФО</a>
+      <a href="#stack" class="nav-link" data-nav="stack"><em>02</em> СТЕК</a>
+      <a href="#projects" class="nav-link" data-nav="projects"><em>03</em> ПРОЕКТЫ</a>
+      <a href="#articles" class="nav-link" data-nav="articles"><em>04</em> СТАТЬИ</a>
+      <a href="#experience" class="nav-link" data-nav="experience"><em>05</em> ОПЫТ</a>
+      <a href="#sit" class="nav-link" data-nav="sit"><em>06</em> S.I.T</a>
+      <a href="#contacts" class="nav-link" data-nav="contacts"><em>07</em> КОНТАКТЫ</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+        <span class="theme-opt" data-theme-opt="dark">DARK</span>
+        <span class="theme-opt" data-theme-opt="light">LIGHT</span>
+        <span class="theme-thumb"></span>
+      </button>
+      <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
+</header>
 
-  <div class="nav-actions">
-    <button id="themeToggle" class="theme-btn mono" aria-label="Переключить тему">
-      <span class="theme-icon">🌙</span>
-      <span class="theme-text">DARK</span>
-    </button>
-  </div>
-</nav>
+<main id="top">
 
-<main>
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="hero">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-inner">
 
-  <!-- ============ 01 HERO ============ -->
-  <section id="hero" class="hero-section">
-    <div class="hero-container">
-
-      <!-- СТИЛЬНАЯ АВАТАР-КАРТОЧКА -->
-      <div class="avatar-wrapper reveal">
-        <div class="avatar-card">
-          <span class="corner tl"></span>
-          <span class="corner tr"></span>
-          <span class="corner bl"></span>
-          <span class="corner br"></span>
-
-          <div class="avatar-hud hud-tl mono"><span class="dot-rec"></span> SYS.ONLINE</div>
-          <div class="avatar-hud hud-br mono">55.1602°N 61.4028°E</div>
-
-          <div class="avatar-image-box">
-            <img src="photo.jpg" alt="Никита" class="hero-photo" onerror="this.style.display='none'; document.getElementById('heroFallback').style.display='flex';">
-            <div class="avatar-overlay"></div>
-          </div>
-
-          <div class="avatar-badge mono">
-            <span class="badge-icon">⚡</span>
-            <span>UAV & CV ENGINEER</span>
-          </div>
+      <div class="hero-text reveal">
+        <div class="eyebrow">
+          <span class="dot pulse"></span>
+          СИСТЕМА ИНЖЕНЕРНОГО УЧЁТА · ДОСЬЕ ОПЕРАТОРА
         </div>
-        <div class="avatar-caption mono">FIG 01.1 — TARGET IDENTIFIED // NIKITA</div>
-      </div>
-
-      <!-- ТЕКСТ И ИНФОРМАЦИЯ -->
-      <div class="hero-content">
-        <div class="kicker mono reveal">// UAV ENGINEER PORTFOLIO <em>· CHELYABINSK, RU</em></div>
-        <h1 class="hero-title reveal">НИКИТА <span class="handle mono">nikitosrus01</span></h1>
-        <div class="role mono reveal">ИНЖЕНЕР-РАЗРАБОТЧИК БПЛА · CAD · COMPUTER VISION</div>
-        
-        <p class="hero-bio reveal">
-          Ученик 10 класса школы №56 г. Челябинска. Разрабатываю БПЛА с 2023 года —
-          от механики и CAD-моделей до интеграции нейросетей, компьютерного зрения и систем навигации без GPS
-          для мониторинга промышленных карьеров. Базовая площадка разработки — Кванториум Челябинск,
-          научный руководитель — Хужин А.Р.
+        <h1 class="hero-title">
+          <span class="hero-title-name">Никита</span>
+          <span class="hero-title-handle">nikitosrus01</span>
+        </h1>
+        <p class="hero-subtitle">ИНЖЕНЕР-РАЗРАБОТЧИК БПЛА · CAD · COMPUTER&nbsp;VISION</p>
+        <p class="hero-bio">
+          Занимаюсь разработкой беспилотных летательных аппаратов с 2023 года —
+          от механики и CAD-моделей до нейросетей, OpenCV и автономной навигации
+          без GPS. Ученик 10 класса школы №56 (г. Челябинск), воспитанник
+          Кванториума.
         </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">
+            <span>Смотреть проекты</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#contacts" class="btn btn-ghost">Связаться</a>
+        </div>
+      </div>
 
-        <div class="spec-grid reveal">
-          <div class="spec-item"><span class="mono">ОБЪЕКТ</span><b>Никита / nikitosrus01</b></div>
-          <div class="spec-item"><span class="mono">СТАТУС</span><b>10 КЛАСС · КВАНТОРИУМ</b></div>
-          <div class="spec-item"><span class="mono">РУКОВОДИТЕЛЬ</span><b>ХУЖИН А.Р.</b></div>
-          <div class="spec-item"><span class="mono">ПОЛЕ</span><b>БПЛА · CAD · CV</b></div>
+      <div class="hero-card reveal" id="hudCard">
+        <div class="hud-card-frame">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+
+          <div class="hud-card-top">
+            <span class="hud-id">ID · 0056-UAV</span>
+            <span class="status-chip">
+              <span class="dot pulse"></span> SYS.ONLINE
+            </span>
+          </div>
+
+          <div class="hud-avatar">
+            <div class="hud-avatar-ring"></div>
+            <div class="hud-avatar-scan"></div>
+            <svg viewBox="0 0 120 120" class="hud-avatar-glyph" aria-hidden="true">
+              <circle cx="60" cy="45" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M22 100C22 78 39 66 60 66C81 66 98 78 98 100" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span class="crosshair ch-tl"></span>
+            <span class="crosshair ch-br"></span>
+          </div>
+
+          <div class="hud-geo">
+            <span class="geo-label">POS</span>
+            <span class="geo-value" id="geoCoords">55.1644° N, 61.4368° E</span>
+          </div>
+
+          <dl class="hud-spec">
+            <div class="hud-spec-row">
+              <dt>ОБЪЕКТ</dt><dd>Никита «nikitosrus01»</dd>
+            </div>
+            <div class="hud-spec-row">
+              <dt>СТАТУС</dt><dd>Активная разработка</dd>
+            </div>
+            <div class="hud-spec-row">
+              <dt>РУКОВОДИТЕЛЬ</dt><dd>Кванториум · Челябинск</dd>
+            </div>
+            <div class="hud-spec-row">
+              <dt>ПОЛЕ ДЕЯТЕЛЬНОСТИ</dt><dd>БПЛА / CV / Автономность</dd>
+            </div>
+          </dl>
         </div>
       </div>
 
     </div>
+
+    <div class="hero-scroll-cue" aria-hidden="true">
+      <span>SCROLL</span>
+      <span class="scroll-line"></span>
+    </div>
   </section>
 
-  <!-- ============ TICKER ============ -->
-  <div class="ticker">
-    <div class="ticker-track mono">
-      <span>SOLIDWORKS</span><span>NX</span><span>FEMAP</span><span>PYTHON</span><span>JAVASCRIPT</span><span>HTML / CSS</span><span>ARDUPILOT</span><span>BETAFLIGHT</span><span>ROS / GAZEBO</span><span>YOLO</span><span>OPENCV</span><span>FLASK</span><span>MQTT</span><span>AGISOFT METASHAPE</span><span>RASPBERRY PI</span>
-      <span>SOLIDWORKS</span><span>NX</span><span>FEMAP</span><span>PYTHON</span><span>JAVASCRIPT</span><span>HTML / CSS</span><span>ARDUPILOT</span><span>BETAFLIGHT</span><span>ROS / GAZEBO</span><span>YOLO</span><span>OPENCV</span><span>FLASK</span><span>MQTT</span><span>AGISOFT METASHAPE</span><span>RASPBERRY PI</span>
+  <!-- ================= TICKER ================= -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="tickerTrack">
+      <!-- duplicated in JS for seamless loop -->
     </div>
   </div>
 
-  <!-- ============ 02 STACK ============ -->
-  <section id="stack" class="section">
-    <div class="sec-head reveal">
-      <span class="sec-num mono">§ 02</span>
-      <h2>Стек</h2>
-      <div class="sec-line"></div>
-    </div>
-
-    <div class="stack-rows">
-      <div class="stack-row hud-card reveal">
-        <h3 class="mono">CAD / ИНЖЕНЕРИЯ</h3>
-        <p><b>SolidWorks</b> · <b>NX</b> · <b>Femap</b> — проектирование конструкций, 3D-моделирование и прочностной анализ.</p>
-      </div>
-      <div class="stack-row hud-card reveal">
-        <h3 class="mono">ЯЗЫКИ / ВЕБ</h3>
-        <p><b>Python</b> · <b>JavaScript</b> · <b>HTML</b> · <b>CSS</b> — разработка алгоритмов, интерфейсов и веб-сервисов управления.</p>
-      </div>
-      <div class="stack-row hud-card reveal">
-        <h3 class="mono">БПЛА / COMPUTER VISION</h3>
-        <p><b>ArduPilot</b> · <b>Betaflight</b> · <b>ROS / Gazebo</b> · <b>YOLO</b> · <b>OpenCV</b> · <b>Flask</b> · <b>MQTT</b> · <b>Agisoft Metashape</b> · <b>Raspberry Pi</b></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 03 PROJECTS ============ -->
-  <section id="projects" class="section">
-    <div class="sec-head reveal">
-      <span class="sec-num mono">§ 03</span>
-      <h2>Проекты</h2>
-      <div class="sec-line"></div>
-    </div>
-
-    <div class="grid2">
-      <article class="hud-card reveal">
-        <span class="pid mono">P-01 / MONITORING</span>
-        <h3>«Карьерист»</h3>
-        <p>БПЛА для автоматического мониторинга карьеров: тепловизионная и RGB-камеры, нейросеть YOLO26 для поиска трещин, алгоритм статистического выявления тепловых аномалий, веб-сервис визуализации. Работа без GPS.</p>
-        <div class="tags mono"><span>YOLO26</span><span>Raspberry Pi</span><span>Thermal Camera</span><span>Flask</span><span>Agisoft</span></div>
-        <span class="badge b-test mono">ПРОТОТИП ИСПЫТАН</span>
-      </article>
-
-      <article class="hud-card reveal">
-        <span class="pid mono">P-02 / AUTONOMY</span>
-        <h3>ИИ-навигация без GPS</h3>
-        <p>Кейс ПАО «ОАК». Навигация БПЛА на основе компьютерного зрения там, где спутниковый сигнал недоступен. Обучение модели, построение 3D-моделей местности в CAD и испытания в Gazebo.</p>
-        <div class="tags mono"><span>YOLO</span><span>ROS / Gazebo</span><span>Python</span></div>
-        <span class="badge b-done mono">ЗАВЕРШЁН</span>
-      </article>
-
-      <article class="hud-card reveal">
-        <span class="pid mono">P-03 / METEO</span>
-        <h3>Метеодрон</h3>
-        <p>Заказчик — ООО «Cursis». БПЛА для автоматического сбора метеорологических данных. Полётный контроллер ArduPilot, интеграция датчиков и передача телеметрии по MQTT.</p>
-        <div class="tags mono"><span>ArduPilot</span><span>MQTT</span></div>
-        <span class="badge b-done mono">ЗАВЕРШЁН · ИСПЫТАНИЯ ПРОЙДЕНЫ</span>
-      </article>
-
-      <article class="hud-card reveal">
-        <span class="pid mono">P-04 / GEO</span>
-        <h3>Гидрогеомониторинг</h3>
-        <p>Заказчик — ГОК «Томинский». Дрон для геомагнитной съёмки территории и поиска подземных водных горизонтов для геологоразведки.</p>
-        <div class="tags mono"><span>Betaflight</span></div>
-        <span class="badge b-done mono">ЗАВЕРШЁН</span>
-      </article>
-    </div>
-  </section>
-
-  <!-- ============ 04 TIMELINE ============ -->
-  <section id="timeline" class="section">
-    <div class="sec-head reveal">
-      <span class="sec-num mono">§ 04</span>
-      <h2>Опыт участия</h2>
-      <div class="sec-line"></div>
-    </div>
-
-    <div class="timeline">
-      <div class="year-divider mono reveal">2025 / 2026</div>
-
-      <div class="exp-item hud-card reveal">
-        <span class="badge b-win mono">ПОБЕДИТЕЛЬ</span>
-        <h3>«Большие вызовы»</h3>
-        <p>Направление «Беспилотные и логистические системы».</p>
-      </div>
-
-      <div class="exp-item hud-card reveal">
-        <span class="badge b-prize mono">2 МЕСТО</span>
-        <h3>«Инженерные кадры России»</h3>
-        <p>Всероссийский этап разработки БПЛА для промышленности.</p>
-      </div>
-
-      <div class="exp-item hud-card reveal">
-        <span class="badge b-win mono">1 МЕСТО ЛИЧНЫЙ · 3 КОМАНДНЫЙ</span>
-        <h3>«Соколиная охота»</h3>
-        <p>Всероссийский чемпионат по пилотированию и настройке БПЛА.</p>
-      </div>
-
-      <div class="year-divider mono reveal">2024 / 2025</div>
-
-      <div class="exp-item hud-card reveal">
-        <span class="badge b-prize mono">ПРИЗЁР</span>
-        <h3>Кейс ПАО «ОАК» · «Большие вызовы»</h3>
-        <p>Автономная навигация беспилотных авиационных систем.</p>
+  <!-- ================= INFO ================= -->
+  <section class="section" id="info">
+    <div class="section-inner">
+      <h2 class="section-title reveal"><em>01</em> Инфо</h2>
+      <div class="info-grid">
+        <div class="info-block reveal">
+          <p class="info-lead">
+            Проектирую и собираю беспилотные системы полного цикла — от расчёта
+            конструкции в CAD до полётного ПО и алгоритмов компьютерного зрения,
+            которые позволяют дрону ориентироваться там, где GPS недоступен.
+          </p>
+          <p class="info-text">
+            Работаю на стыке инженерии и программирования: механика и
+            аэродинамика планера, электроника и полётные контроллеры,
+            нейросети для распознавания объектов и автономная навигация.
+            Участвую в реальных отраслевых кейсах — от мониторинга карьеров
+            до сотрудничества с ПАО «ОАК».
+          </p>
+        </div>
+        <div class="info-facts reveal">
+          <div class="fact">
+            <span class="fact-num">2023</span>
+            <span class="fact-label">начало разработки БПЛА</span>
+          </div>
+          <div class="fact">
+            <span class="fact-num">4</span>
+            <span class="fact-label">действующих проекта</span>
+          </div>
+          <div class="fact">
+            <span class="fact-num">3</span>
+            <span class="fact-label">призовых места на конкурсах</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ 05 S.I.T ============ -->
-  <section id="sit" class="section">
-    <div class="sec-head reveal">
-      <span class="sec-num mono">§ 05</span>
-      <h2>S.I.T и партнёры</h2>
-      <div class="sec-line"></div>
-    </div>
+  <!-- ================= STACK ================= -->
+  <section class="section" id="stack">
+    <div class="section-inner">
+      <h2 class="section-title reveal"><em>02</em> Стек</h2>
+      <div class="stack-grid">
 
-    <div class="grid3">
-      <div class="hud-card reveal"><span class="pid mono">PTR / 01</span><h3>ООО «Курсир»</h3><p>Разработка БАС и систем управления.</p></div>
-      <div class="hud-card reveal"><span class="pid mono">PTR / 02</span><h3>ПАО «ОАК»</h3><p>Автономная навигация БАС без GPS.</p></div>
-      <div class="hud-card reveal"><span class="pid mono">PTR / 03</span><h3>Кванториум Челябинск</h3><p>Инженерная база разработки.</p></div>
-    </div>
+        <article class="stack-card tilt reveal">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <div class="stack-card-head">
+            <span class="stack-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3 8L12 3L21 8V16L12 21L3 16V8Z" stroke="currentColor" stroke-width="1.4"/><path d="M3 8L12 13L21 8" stroke="currentColor" stroke-width="1.4"/><path d="M12 13V21" stroke="currentColor" stroke-width="1.4"/></svg>
+            </span>
+            <h3>CAD / Инженерия</h3>
+          </div>
+          <ul class="stack-list">
+            <li>SolidWorks</li>
+            <li>Siemens NX</li>
+            <li>Femap</li>
+            <li>Расчёт прочности и аэродинамики</li>
+          </ul>
+        </article>
 
-    <div class="sit-box hud-card reveal">
-      <h3>Я — участник проекта <span class="accent">S.I.T</span></h3>
-      <p>S.I.T — собственная инженерная инициатива, в рамках которой разрабатываются инструменты и устройства для авиамодельного и робототехнического сообщества, собираются лётные и наземные прототипы, а идеи проверяются на соревнованиях и хакатонах.</p>
+        <article class="stack-card tilt reveal">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <div class="stack-card-head">
+            <span class="stack-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M8 9L4 12L8 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 9L20 12L16 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 6L11 18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </span>
+            <h3>Программирование / CV / ROS</h3>
+          </div>
+          <ul class="stack-list">
+            <li>Python · C++</li>
+            <li>ROS / Gazebo</li>
+            <li>OpenCV · YOLO</li>
+            <li>Обработка сенсорных данных</li>
+          </ul>
+        </article>
+
+        <article class="stack-card tilt reveal">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <div class="stack-card-head">
+            <span class="stack-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M9 9H15V15H9V9Z" stroke="currentColor" stroke-width="1.4"/><path d="M12 4V2M12 22V20M4 12H2M22 12H20" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </span>
+            <h3>Полётные контроллеры / железо</h3>
+          </div>
+          <ul class="stack-list">
+            <li>ArduPilot · Betaflight</li>
+            <li>Raspberry Pi</li>
+            <li>MQTT</li>
+            <li>Сборка и настройка электроники</li>
+          </ul>
+        </article>
+
+      </div>
     </div>
   </section>
 
-  <!-- ============ 06 CONTACTS ============ -->
-  <section id="contact" class="section">
-    <div class="sec-head reveal">
-      <span class="sec-num mono">§ 06</span>
-      <h2>Контакты</h2>
-      <div class="sec-line"></div>
+  <!-- ================= PROJECTS ================= -->
+  <section class="section" id="projects">
+    <div class="section-inner">
+      <h2 class="section-title reveal"><em>03</em> Проекты</h2>
+      <div class="projects-grid">
+
+        <article class="project-card tilt reveal">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <div class="project-status status-tested">Прототип испытан</div>
+          <h3 class="project-title">«Карьерист»</h3>
+          <p class="project-desc">
+            Система мониторинга карьеров на базе БПЛА: распознавание техники и
+            людей по модели YOLO26 и тепловизионной съёмке, работа в условиях
+            плохой видимости и без GPS-привязки.
+          </p>
+          <ul class="project-tags">
+            <li>YOLO26</li><li>Тепловизор</li><li>Без GPS</li><li>Python</li>
+          </ul>
+        </article>
+
+        <article class="project-card tilt reveal">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <div class="project-status status-progress">В разработке</div>
+          <h3 class="project-title">ИИ-навигация без GPS</h3>
+          <p class="project-desc">
+            Кейс совместно с ПАО «ОАК»: алгоритм визуальной одометрии и
+            построения карты в реальном времени для полёта дрона в условиях
+            подавления или отсутствия сигнала GPS.
+          </p>
+          <ul class="project-tags">
+            <li>ROS</li><li>Gazebo</li><li>SLAM</li><li>ОАК</li>
+          </ul>
+        </article>
+
+        <article class="project-card tilt reveal">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <div class="project-status status-tested">Прототип испытан</div>
+          <h3 class="project-title">Метеодрон</h3>
+          <p class="project-desc">
+            Беспилотник для сбора метеоданных по заказу компании «Cursis»:
+            полётный контроллер ArduPilot, передача телеметрии и показаний
+            датчиков по протоколу MQTT в реальном времени.
+          </p>
+          <ul class="project-tags">
+            <li>ArduPilot</li><li>MQTT</li><li>Телеметрия</li><li>Cursis</li>
+          </ul>
+        </article>
+
+        <article class="project-card tilt reveal">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <div class="project-status status-done">Завершён</div>
+          <h3 class="project-title">Гидрогеомониторинг</h3>
+          <p class="project-desc">
+            Геомагнитная съёмка территории ГОКа «Томинский» с воздуха:
+            построение карт магнитных аномалий для оценки гидрогеологической
+            обстановки участка.
+          </p>
+          <ul class="project-tags">
+            <li>Геомагнитная съёмка</li><li>ГОК «Томинский»</li><li>Картография</li>
+          </ul>
+        </article>
+
+      </div>
     </div>
+  </section>
 
-    <div class="grid3">
-      <button class="hud-card contact-card copyable reveal" data-copy="nikitosrus01@gmail.com">
-        <span class="lbl mono">EMAIL</span>
-        <span class="val mono">nikitosrus01@gmail.com</span>
-        <span class="copy-hint mono">НАЖМИТЕ ЧТОБЫ СКОПИРОВАТЬ</span>
-      </button>
+  <!-- ================= ARTICLES ================= -->
+  <section class="section" id="articles">
+    <div class="section-inner">
+      <h2 class="section-title reveal"><em>04</em> Публикации и статьи</h2>
+      <div class="articles-list">
 
-      <button class="hud-card contact-card copyable reveal" data-copy="@nikitosrus01">
-        <span class="lbl mono">TELEGRAM</span>
-        <span class="val mono">@nikitosrus01</span>
-        <span class="copy-hint mono">НАЖМИТЕ ЧТОБЫ СКОПИРОВАТЬ</span>
-      </button>
+        <a href="#" class="article-row reveal">
+          <div class="article-meta">
+            <span class="article-tag">CV</span>
+            <span class="article-date">2026</span>
+          </div>
+          <div class="article-body">
+            <h3>Детекция техники на карьерах в условиях низкой видимости</h3>
+            <p>Разбор архитектуры YOLO26 и особенностей дообучения модели на тепловизионных данных для проекта «Карьерист».</p>
+          </div>
+          <span class="article-arrow" aria-hidden="true">→</span>
+        </a>
 
-      <a class="hud-card contact-card reveal" href="https://github.com/nikitosrus01" target="_blank" rel="noopener">
-        <span class="lbl mono">GITHUB</span>
-        <span class="val mono">github.com/nikitosrus01</span>
-        <span class="copy-hint mono">ОТКРЫТЬ В НОВОЙ ВЛАДКЕ ↗</span>
-      </a>
+        <a href="#" class="article-row reveal">
+          <div class="article-meta">
+            <span class="article-tag">ROS</span>
+            <span class="article-date">2025</span>
+          </div>
+          <div class="article-body">
+            <h3>Визуальная одометрия для полёта без GPS: заметки инженера</h3>
+            <p>Практический кейс построения навигационного стека на ROS / Gazebo в рамках работы с ПАО «ОАК».</p>
+          </div>
+          <span class="article-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a href="#" class="article-row reveal">
+          <div class="article-meta">
+            <span class="article-tag">CAD</span>
+            <span class="article-date">2025</span>
+          </div>
+          <div class="article-body">
+            <h3>Расчёт прочности планера в Femap: типичные ошибки новичка</h3>
+            <p>Технические заметки о постановке граничных условий и интерпретации результатов КЭ-анализа.</p>
+          </div>
+          <span class="article-arrow" aria-hidden="true">→</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE / TIMELINE ================= -->
+  <section class="section" id="experience">
+    <div class="section-inner">
+      <h2 class="section-title reveal"><em>05</em> Опыт и достижения</h2>
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-award award-win">Победитель</span>
+            <h3>«Большие вызовы»</h3>
+            <p>Победа во всероссийском конкурсе научно-технических проектов в направлении беспилотных транспортных систем.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-award award-second">2 место</span>
+            <h3>«Инженерные кадры России»</h3>
+            <p>Второе место в конкурсе инженерных проектов среди школьников и студентов колледжей.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-award award-first">1 место, личный зачёт</span>
+            <h3>«Соколиная охота»</h3>
+            <p>Первое место в личном зачёте на соревнованиях по пилотированию и эксплуатации БПЛА.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= S.I.T ================= -->
+  <section class="section" id="sit">
+    <div class="section-inner">
+      <h2 class="section-title reveal"><em>06</em> Инициатива S.I.T</h2>
+      <div class="sit-layout">
+        <div class="sit-text reveal">
+          <p class="info-lead">
+            S.I.T — инженерная инициатива, в рамках которой отрабатываются
+            реальные технические задачи от партнёров: от постановки ТЗ до
+            испытаний рабочего прототипа в поле.
+          </p>
+          <p class="info-text">
+            Проект объединяет школьников, наставников и профильные
+            организации Челябинска вокруг практических задач в области
+            беспилотных систем — это площадка, где инженерные решения
+            проверяются не на бумаге, а на реальных объектах.
+          </p>
+        </div>
+        <div class="partners-grid reveal">
+          <div class="partner-card tilt">
+            <span class="corner tl"></span><span class="corner tr"></span>
+            <span class="corner bl"></span><span class="corner br"></span>
+            <span class="partner-name">ООО «Курсир»</span>
+            <span class="partner-role">Заказчик · Метеодрон</span>
+          </div>
+          <div class="partner-card tilt">
+            <span class="corner tl"></span><span class="corner tr"></span>
+            <span class="corner bl"></span><span class="corner br"></span>
+            <span class="partner-name">ПАО «ОАК»</span>
+            <span class="partner-role">Партнёр · Навигация без GPS</span>
+          </div>
+          <div class="partner-card tilt">
+            <span class="corner tl"></span><span class="corner tr"></span>
+            <span class="corner bl"></span><span class="corner br"></span>
+            <span class="partner-name">Кванториум Челябинск</span>
+            <span class="partner-role">База · Наставничество</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACTS ================= -->
+  <section class="section section-contacts" id="contacts">
+    <div class="section-inner">
+      <h2 class="section-title reveal"><em>07</em> Контакты</h2>
+      <p class="contacts-lead reveal">Нажмите на карточку, чтобы скопировать контакт в буфер обмена.</p>
+
+      <div class="contacts-grid">
+
+        <button class="contact-card tilt reveal" data-copy="hello@forgesoft.dev">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <span class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M3 7L12 13L21 7" stroke="currentColor" stroke-width="1.4"/></svg>
+          </span>
+          <span class="contact-label">EMAIL</span>
+          <span class="contact-value">hello@forgesoft.dev</span>
+        </button>
+
+        <button class="contact-card tilt reveal" data-copy="@nikitosrus01">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <span class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M21 4L2 11.5L9 14M21 4L15 20L9 14M21 4L9 14" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="contact-label">TELEGRAM</span>
+          <span class="contact-value">@nikitosrus01</span>
+        </button>
+
+        <button class="contact-card tilt reveal" data-copy="github.com/nikitosrus01">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <span class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.58 2 12.25C2 16.78 4.87 20.6 8.84 21.95C9.34 22.04 9.5 21.73 9.5 21.46C9.5 21.22 9.5 20.44 9.5 19.4C6.73 20 6.14 18.05 6.14 18.05C5.68 16.86 5.03 16.55 5.03 16.55C4.12 15.91 5.1 15.93 5.1 15.93C6.1 16 6.63 16.98 6.63 16.98C7.5 18.51 8.92 18.07 9.5 17.82C9.59 17.17 9.85 16.73 10.13 16.48C7.93 16.23 5.62 15.36 5.62 11.44C5.62 10.32 6.01 9.4 6.65 8.68C6.55 8.43 6.2 7.38 6.75 5.97C6.75 5.97 7.6 5.7 9.5 7.02C10.3 6.79 11.15 6.68 12 6.68C12.85 6.68 13.7 6.79 14.5 7.02C16.4 5.7 17.25 5.97 17.25 5.97C17.8 7.38 17.45 8.43 17.35 8.68C17.99 9.4 18.38 10.32 18.38 11.44C18.38 15.37 16.06 16.23 13.86 16.47C14.21 16.78 14.53 17.39 14.53 18.32C14.53 19.66 14.52 20.11 14.52 21.46C14.52 21.74 14.68 22.05 15.19 21.95C19.16 20.6 22 16.78 22 12.25C22 6.58 17.52 2 12 2Z" fill="currentColor"/></svg>
+          </span>
+          <span class="contact-label">GITHUB</span>
+          <span class="contact-value">github.com/nikitosrus01</span>
+        </button>
+
+      </div>
     </div>
   </section>
 
 </main>
 
-<footer class="mono">
-  <span>© 2026 FORGESOFT / NIKITOSRUS01</span>
-  <span>CHELYABINSK · UAV ENGINEERING</span>
+<footer class="footer">
+  <div class="footer-inner">
+    <span>© 2026 FORGESOFT / NIKITOSRUS01</span>
+    <span class="footer-status"><span class="dot pulse"></span> SYS.ONLINE</span>
+  </div>
 </footer>
 
 <script src="script.js"></script>
