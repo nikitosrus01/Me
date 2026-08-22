@@ -3,45 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NIKITOSRUS01 | Инженер-разработчик БПЛА</title>
-    <meta name="description" content="Портфолио инженера-разработчика БПЛА. CAD, Computer Vision, ROS, автономная навигация.">
+    <title>NIKITOSRUS01 | UAV Engineer</title>
+    <meta name="description" content="Инженер-разработчик БПЛА. CAD, Computer Vision, ROS, автономная навигация.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Фоновая сетка HUD -->
-    <div class="hud-grid"></div>
-    <div class="hud-crosshair top-left"></div>
-    <div class="hud-crosshair bottom-right"></div>
+    <!-- Фоновый шум и сетка для глубины -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
 
     <!-- Уведомление -->
-    <div id="toast" class="toast">СКОПИРОВАНО!</div>
+    <div id="toast" class="toast">Данные скопированы в буфер</div>
 
     <!-- Header -->
     <header class="header">
         <div class="container header__inner">
             <a href="#info" class="logo">
-                <span class="logo__main">FORGESOFT</span>
-                <span class="logo__sub">/ uav_lab</span>
+                FORGESOFT <span class="logo__divider">/</span> UAV_LAB
             </a>
             <nav class="nav">
                 <ul class="nav__list">
-                    <li><a href="#info" class="nav__link active">01 ИНФО</a></li>
-                    <li><a href="#stack" class="nav__link">02 СТЕК</a></li>
-                    <li><a href="#projects" class="nav__link">03 ПРОЕКТЫ</a></li>
-                    <li><a href="#articles" class="nav__link">04 СТАТЬИ</a></li>
-                    <li><a href="#experience" class="nav__link">05 ОПЫТ</a></li>
-                    <li><a href="#sit" class="nav__link">06 S.I.T</a></li>
-                    <li><a href="#contacts" class="nav__link">07 КОНТАКТЫ</a></li>
+                    <li><a href="#info" class="nav__link active">01. Инфо</a></li>
+                    <li><a href="#stack" class="nav__link">02. Стек</a></li>
+                    <li><a href="#projects" class="nav__link">03. Проекты</a></li>
+                    <li><a href="#articles" class="nav__link">04. Статьи</a></li>
+                    <li><a href="#experience" class="nav__link">05. Опыт</a></li>
+                    <li><a href="#contacts" class="nav__link">06. Контакты</a></li>
                 </ul>
             </nav>
             <button id="theme-toggle" class="theme-toggle" aria-label="Переключить тему">
-                <span class="theme-toggle__icon">◐</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
             </button>
             <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Меню">
-                <span></span><span></span><span></span>
+                <span></span><span></span>
             </button>
         </div>
     </header>
@@ -49,46 +46,46 @@
     <main>
         <!-- Hero Section -->
         <section id="info" class="section hero">
-            <div class="container hero__grid">
-                <div class="hero__card tilt-card reveal">
-                    <div class="cad-corner tl"></div><div class="cad-corner tr"></div>
-                    <div class="cad-corner bl"></div><div class="cad-corner br"></div>
-                    <div class="hero__avatar-wrapper">
-                        <div class="hero__avatar">
-                            <span class="avatar-placeholder">NR</span>
-                        </div>
-                        <div class="hero__status">
-                            <span class="pulse"></span> SYS.ONLINE
-                        </div>
+            <div class="container hero__layout">
+                <div class="hero__text reveal">
+                    <div class="hero__label">
+                        <span class="status-dot"></span> SYS.ONLINE // Челябинск, РФ
                     </div>
-                    <div class="hero__meta">
-                        <span class="meta-label">GPS:</span> 55.1644° N, 61.4368° E
+                    <h1 class="hero__title">
+                        Инженер-разработчик<br>
+                        <span class="text-gradient">БПЛА и Computer Vision</span>
+                    </h1>
+                    <p class="hero__bio">
+                        Разрабатываю автономные беспилотные системы с 2023 года. 
+                        Полный цикл: от механики и CAD-моделирования до нейросетей (YOLO, OpenCV) 
+                        и навигации в условиях отсутствия GPS. Ученик 10 класса школы №56, резидент Кванториума.
+                    </p>
+                    <div class="hero__actions">
+                        <a href="#projects" class="btn btn-primary">Смотреть проекты</a>
+                        <a href="#contacts" class="btn btn-secondary">Связаться</a>
                     </div>
                 </div>
-                <div class="hero__content reveal">
-                    <h1 class="hero__title">Никита <span class="text-accent">nikitosrus01</span></h1>
-                    <h2 class="hero__subtitle">ИНЖЕНЕР-РАЗРАБОТЧИК БПЛА · CAD · COMPUTER VISION</h2>
-                    <p class="hero__bio">
-                        Разработка БПЛА с 2023 года: от механики и CAD-моделей до нейросетей, OpenCV и автономной навигации без GPS. 
-                        Ученик 10 класса школы №56 (г. Челябинск), резидент Кванториума.
-                    </p>
-                    <div class="hero__specs">
-                        <div class="spec-item">
-                            <span class="spec-label">ОБЪЕКТ</span>
-                            <span class="spec-value">Никита / UAV Lab</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">СТАТУС</span>
-                            <span class="spec-value text-orange">Активная разработка</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">РУКОВОДИТЕЛЬ</span>
-                            <span class="spec-value">Самостоятельно / Кванториум</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">ПОЛЕ ДЕЯТЕЛЬНОСТИ</span>
-                            <span class="spec-value">БПЛА, CV, ROS, CAD</span>
-                        </div>
+                
+                <div class="hero__data-panel reveal">
+                    <div class="data-row">
+                        <span class="data-key">ОБЪЕКТ</span>
+                        <span class="data-value">Никита / nikitosrus01</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-key">СТАТУС</span>
+                        <span class="data-value text-accent">Активная разработка</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-key">ЛОКАЦИЯ</span>
+                        <span class="data-value">55.1644° N, 61.4368° E</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-key">СПЕЦИАЛИЗАЦИЯ</span>
+                        <span class="data-value">CAD, ROS, CV, Автономность</span>
+                    </div>
+                    <div class="data-row border-bottom-none">
+                        <span class="data-key">ОБРАЗОВАНИЕ</span>
+                        <span class="data-value">Школа №56, Кванториум</span>
                     </div>
                 </div>
             </div>
@@ -97,91 +94,59 @@
         <!-- Ticker -->
         <div class="ticker-wrap">
             <div class="ticker">
-                <div class="ticker__item">SolidWorks</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">NX</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">Femap</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">Python</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">C++</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">ROS / Gazebo</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">YOLO</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">OpenCV</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">ArduPilot</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">Betaflight</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">Raspberry Pi</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">MQTT</div>
-                <div class="ticker__item">•</div>
+                <span class="ticker__item">SolidWorks</span>
+                <span class="ticker__item">Siemens NX</span>
+                <span class="ticker__item">Python</span>
+                <span class="ticker__item">C++</span>
+                <span class="ticker__item">ROS 2 / Gazebo</span>
+                <span class="ticker__item">YOLOv8</span>
+                <span class="ticker__item">OpenCV</span>
+                <span class="ticker__item">ArduPilot</span>
+                <span class="ticker__item">Raspberry Pi</span>
+                <span class="ticker__item">MQTT</span>
                 <!-- Дублирование для бесшовности -->
-                <div class="ticker__item">SolidWorks</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">NX</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">Femap</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">Python</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">C++</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">ROS / Gazebo</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">YOLO</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">OpenCV</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">ArduPilot</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">Betaflight</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">Raspberry Pi</div>
-                <div class="ticker__item">•</div>
-                <div class="ticker__item">MQTT</div>
-                <div class="ticker__item">•</div>
+                <span class="ticker__item">SolidWorks</span>
+                <span class="ticker__item">Siemens NX</span>
+                <span class="ticker__item">Python</span>
+                <span class="ticker__item">C++</span>
+                <span class="ticker__item">ROS 2 / Gazebo</span>
+                <span class="ticker__item">YOLOv8</span>
+                <span class="ticker__item">OpenCV</span>
+                <span class="ticker__item">ArduPilot</span>
+                <span class="ticker__item">Raspberry Pi</span>
+                <span class="ticker__item">MQTT</span>
             </div>
         </div>
 
         <!-- Stack Section -->
         <section id="stack" class="section">
             <div class="container">
-                <h2 class="section-title reveal"><span class="text-accent">02.</span> СТЕК ТЕХНОЛОГИЙ</h2>
+                <h2 class="section-title reveal"><span class="text-muted">02.</span> Технологический стек</h2>
                 <div class="stack-grid">
-                    <div class="stack-card tilt-card reveal">
-                        <div class="cad-corner tl"></div><div class="cad-corner br"></div>
-                        <h3 class="stack-card__title">CAD / Инженерия</h3>
+                    <div class="stack-card reveal">
+                        <h3 class="stack-card__title">CAD & Инженерия</h3>
                         <ul class="stack-list">
                             <li>SolidWorks (Продвинутый)</li>
-                            <li>Siemens NX</li>
-                            <li>Siemens Femap (CAE)</li>
-                            <li>3D-печать и прототипирование</li>
+                            <li>Siemens NX & Femap (CAE)</li>
+                            <li>Аддитивные технологии / Прототипирование</li>
                         </ul>
                     </div>
-                    <div class="stack-card tilt-card reveal">
-                        <div class="cad-corner tl"></div><div class="cad-corner br"></div>
-                        <h3 class="stack-card__title">Программирование / CV / ROS</h3>
+                    <div class="stack-card reveal">
+                        <h3 class="stack-card__title">Программирование & CV</h3>
                         <ul class="stack-list">
                             <li>Python, C++</li>
                             <li>OpenCV, YOLO (v5-v8)</li>
-                            <li>ROS 2 / Gazebo Simulation</li>
+                            <li>ROS 2, Gazebo Simulation</li>
                             <li>Raspberry Pi, Jetson Nano</li>
                         </ul>
                     </div>
-                    <div class="stack-card tilt-card reveal">
-                        <div class="cad-corner tl"></div><div class="cad-corner br"></div>
-                        <h3 class="stack-card__title">Полётные контроллеры и железо</h3>
+                    <div class="stack-card reveal">
+                        <h3 class="stack-card__title">Авионика & Железо</h3>
                         <ul class="stack-list">
                             <li>ArduPilot (Mission Planner)</li>
                             <li>Betaflight / INAV</li>
-                            <li>MQTT, MAVLink протоколы</li>
-                            <li>Пайка, сборка, настройка ESC</li>
+                            <li>MAVLink, MQTT протоколы</li>
+                            <li>Сборка, пайка, настройка силовых установок</li>
                         </ul>
                     </div>
                 </div>
@@ -191,47 +156,50 @@
         <!-- Projects Section -->
         <section id="projects" class="section">
             <div class="container">
-                <h2 class="section-title reveal"><span class="text-accent">03.</span> ПРОЕКТЫ</h2>
+                <h2 class="section-title reveal"><span class="text-muted">03.</span> Избранные проекты</h2>
                 <div class="projects-grid">
-                    <article class="project-card tilt-card reveal">
-                        <div class="cad-corner tl"></div><div class="cad-corner tr"></div><div class="cad-corner bl"></div><div class="cad-corner br"></div>
-                        <div class="project-card__header">
-                            <h3>Карьерист</h3>
+                    <article class="project-card reveal">
+                        <div class="project-card__top">
+                            <span class="project-number">01</span>
                             <span class="status-badge status-tested">Прототип испытан</span>
                         </div>
-                        <p class="project-card__desc">Мониторинг карьеров с использованием YOLOv8 и тепловизоров. Полная автономность без GPS-сигнала.</p>
+                        <h3 class="project-card__title">Карьерист</h3>
+                        <p class="project-card__desc">Мониторинг карьеров с использованием YOLOv8 и тепловизоров. Полная автономность и навигация без GPS-сигнала.</p>
                         <div class="project-card__tags">
                             <span>YOLO</span><span>OpenCV</span><span>Без GPS</span>
                         </div>
                     </article>
-                    <article class="project-card tilt-card reveal">
-                        <div class="cad-corner tl"></div><div class="cad-corner tr"></div><div class="cad-corner bl"></div><div class="cad-corner br"></div>
-                        <div class="project-card__header">
-                            <h3>ИИ-навигация без GPS</h3>
+
+                    <article class="project-card reveal">
+                        <div class="project-card__top">
+                            <span class="project-number">02</span>
                             <span class="status-badge status-done">Завершён</span>
                         </div>
+                        <h3 class="project-card__title">ИИ-навигация без GPS</h3>
                         <p class="project-card__desc">Кейс для ПАО «ОАК». Разработка алгоритмов визуальной одометрии и навигации в условиях подавления ГНСС.</p>
                         <div class="project-card__tags">
-                            <span>ROS</span><span>Gazebo</span><span>C++</span>
+                            <span>ROS 2</span><span>Gazebo</span><span>C++</span>
                         </div>
                     </article>
-                    <article class="project-card tilt-card reveal">
-                        <div class="cad-corner tl"></div><div class="cad-corner tr"></div><div class="cad-corner bl"></div><div class="cad-corner br"></div>
-                        <div class="project-card__header">
-                            <h3>Метеодрон</h3>
+
+                    <article class="project-card reveal">
+                        <div class="project-card__top">
+                            <span class="project-number">03</span>
                             <span class="status-badge status-dev">В разработке</span>
                         </div>
-                        <p class="project-card__desc">Заказчик: «Cursis». Дрон для сбора метеоданных с передачей телеметрии в реальном времени.</p>
+                        <h3 class="project-card__title">Метеодрон</h3>
+                        <p class="project-card__desc">Заказчик: «Cursis». Дрон для сбора метеоданных с передачей телеметрии в реальном времени по MQTT.</p>
                         <div class="project-card__tags">
                             <span>ArduPilot</span><span>MQTT</span><span>IoT</span>
                         </div>
                     </article>
-                    <article class="project-card tilt-card reveal">
-                        <div class="cad-corner tl"></div><div class="cad-corner tr"></div><div class="cad-corner bl"></div><div class="cad-corner br"></div>
-                        <div class="project-card__header">
-                            <h3>Гидрогеомониторинг</h3>
+
+                    <article class="project-card reveal">
+                        <div class="project-card__top">
+                            <span class="project-number">04</span>
                             <span class="status-badge status-tested">Прототип испытан</span>
                         </div>
+                        <h3 class="project-card__title">Гидрогеомониторинг</h3>
                         <p class="project-card__desc">ГОК «Томинский». Система геомагнитной съёмки и мониторинга состояния гидротехнических сооружений.</p>
                         <div class="project-card__tags">
                             <span>Сенсоры</span><span>Python</span><span>CAD</span>
@@ -244,23 +212,23 @@
         <!-- Articles Section -->
         <section id="articles" class="section">
             <div class="container">
-                <h2 class="section-title reveal"><span class="text-accent">04.</span> ПУБЛИКАЦИИ И СТАТЬИ</h2>
+                <h2 class="section-title reveal"><span class="text-muted">04.</span> Публикации и заметки</h2>
                 <div class="articles-list">
-                    <a href="#" class="article-item reveal" onclick="event.preventDefault(); showToast('Ссылка скоро будет доступна');">
+                    <a href="#" class="article-item reveal" onclick="event.preventDefault(); showToast('Ссылка будет добавлена');">
                         <div class="article-item__meta">
                             <span class="article-date">2025</span>
                             <span class="article-tag">Computer Vision</span>
                         </div>
-                        <h3 class="article-item__title">Оптимизация моделей YOLO для развёртывания на Raspberry Pi 4 в реальных условиях</h3>
-                        <p class="article-item__excerpt">Разбор методов квантования и прунинга для достижения 30+ FPS на edge-устройствах...</p>
+                        <h3 class="article-item__title">Оптимизация YOLO для Raspberry Pi 4: квантование и прунинг</h3>
+                        <p class="article-item__excerpt">Достижение 30+ FPS на edge-устройствах для задач детекции в реальном времени...</p>
                     </a>
-                    <a href="#" class="article-item reveal" onclick="event.preventDefault(); showToast('Ссылка скоро будет доступна');">
+                    <a href="#" class="article-item reveal" onclick="event.preventDefault(); showToast('Ссылка будет добавлена');">
                         <div class="article-item__meta">
                             <span class="article-date">2024</span>
                             <span class="article-tag">ROS / Навигация</span>
                         </div>
-                        <h3 class="article-item__title">Построение карты и локализация без GPS: практические подходы в ROS 2</h3>
-                        <p class="article-item__excerpt">Сравнение алгоритмов V-SLAM (ORB-SLAM3, VINS-Fusion) для применения на БПЛА...</p>
+                        <h3 class="article-item__title">V-SLAM без GPS: сравнение ORB-SLAM3 и VINS-Fusion для БПЛА</h3>
+                        <p class="article-item__excerpt">Практические подходы к построению карты и локализации в условиях отсутствия ГНСС...</p>
                     </a>
                 </div>
             </div>
@@ -269,61 +237,30 @@
         <!-- Experience Section -->
         <section id="experience" class="section">
             <div class="container">
-                <h2 class="section-title reveal"><span class="text-accent">05.</span> ОПЫТ И ДОСТИЖЕНИЯ</h2>
+                <h2 class="section-title reveal"><span class="text-muted">05.</span> Опыт и достижения</h2>
                 <div class="timeline">
                     <div class="timeline-item reveal">
-                        <div class="timeline-item__marker"></div>
-                        <div class="timeline-item__content">
+                        <div class="timeline-content">
                             <span class="timeline-year">2025</span>
                             <h3>«Большие вызовы»</h3>
-                            <p class="text-accent">Победитель</p>
-                            <p>Разработка и защита концепции автономного БПЛА для мониторинга инфраструктуры.</p>
+                            <p class="timeline-role text-accent">Победитель</p>
+                            <p class="timeline-desc">Разработка и защита концепции автономного БПЛА для мониторинга инфраструктуры.</p>
                         </div>
                     </div>
                     <div class="timeline-item reveal">
-                        <div class="timeline-item__marker"></div>
-                        <div class="timeline-item__content">
+                        <div class="timeline-content">
                             <span class="timeline-year">2024</span>
                             <h3>«Инженерные кадры России»</h3>
-                            <p class="text-orange">2 место</p>
-                            <p>Олимпиада по профилю "Авиационные и космические системы".</p>
+                            <p class="timeline-role text-orange">2 место</p>
+                            <p class="timeline-desc">Олимпиада по профилю "Авиационные и космические системы".</p>
                         </div>
                     </div>
                     <div class="timeline-item reveal">
-                        <div class="timeline-item__marker"></div>
-                        <div class="timeline-item__content">
+                        <div class="timeline-content">
                             <span class="timeline-year">2023</span>
                             <h3>«Соколиная охота»</h3>
-                            <p class="text-accent">1 место (личный зачет)</p>
-                            <p>Соревнования по пилотированию и программированию БПЛА.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- S.I.T Section -->
-        <section id="sit" class="section">
-            <div class="container">
-                <h2 class="section-title reveal"><span class="text-accent">06.</span> ИНИЦИАТИВА S.I.T И ПАРТНЁРЫ</h2>
-                <div class="sit-grid">
-                    <div class="sit-info tilt-card reveal">
-                        <div class="cad-corner tl"></div><div class="cad-corner br"></div>
-                        <h3>Проект S.I.T</h3>
-                        <p>Участие в инженерном проекте S.I.T (Smart Industrial Technologies), направленном на интеграцию автономных систем в промышленные процессы и разработку инновационных решений для реального сектора экономики.</p>
-                    </div>
-                    <div class="partners-grid">
-                        <div class="partner-card reveal">
-                            <h4>ООО «Курсир»</h4>
-                            <p>Технологический партнёр</p>
-                        </div>
-                        <div class="partner-card reveal">
-                            <h4>ПАО «ОАК»</h4>
-                            <p>Индустриальный заказчик</p>
-                        </div>
-                        <div class="partner-card reveal">
-                            <h4>Кванториум Челябинск</h4>
-                            <p>Образовательная база</p>
+                            <p class="timeline-role text-accent">1 место (личный зачет)</p>
+                            <p class="timeline-desc">Соревнования по пилотированию и программированию БПЛА.</p>
                         </div>
                     </div>
                 </div>
@@ -333,36 +270,45 @@
         <!-- Contacts Section -->
         <section id="contacts" class="section">
             <div class="container">
-                <h2 class="section-title reveal"><span class="text-accent">07.</span> КОНТАКТЫ</h2>
+                <h2 class="section-title reveal"><span class="text-muted">06.</span> Контакты</h2>
                 <div class="contacts-grid">
-                    <button class="contact-card tilt-card reveal" data-copy="nikitosrus01@example.com">
-                        <div class="cad-corner tl"></div><div class="cad-corner br"></div>
-                        <span class="contact-icon">✉</span>
+                    <button class="contact-card reveal" data-copy="nikitosrus01@example.com">
                         <span class="contact-label">Email</span>
                         <span class="contact-value">nikitosrus01@example.com</span>
+                        <span class="contact-action">Нажмите, чтобы скопировать</span>
                     </button>
-                    <button class="contact-card tilt-card reveal" data-copy="@nikitosrus01">
-                        <div class="cad-corner tl"></div><div class="cad-corner br"></div>
-                        <span class="contact-icon">✈</span>
+                    <button class="contact-card reveal" data-copy="@nikitosrus01">
                         <span class="contact-label">Telegram</span>
                         <span class="contact-value">@nikitosrus01</span>
+                        <span class="contact-action">Нажмите, чтобы скопировать</span>
                     </button>
-                    <button class="contact-card tilt-card reveal" data-copy="https://github.com/nikitosrus01">
-                        <div class="cad-corner tl"></div><div class="cad-corner br"></div>
-                        <span class="contact-icon">⌨</span>
+                    <button class="contact-card reveal" data-copy="https://github.com/nikitosrus01">
                         <span class="contact-label">GitHub</span>
                         <span class="contact-value">github.com/nikitosrus01</span>
+                        <span class="contact-action">Нажмите, чтобы скопировать</span>
                     </button>
+                </div>
+                
+                <div class="partners-block reveal">
+                    <p class="partners-label">При поддержке и в сотрудничестве с:</p>
+                    <div class="partners-list">
+                        <span>ООО «Курсир»</span>
+                        <span class="divider">•</span>
+                        <span>ПАО «ОАК»</span>
+                        <span class="divider">•</span>
+                        <span>Кванториум Челябинск</span>
+                        <span class="divider">•</span>
+                        <span>Инженерный проект S.I.T</span>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container footer__inner">
-            <p>© 2026 FORGESOFT / NIKITOSRUS01. Все права защищены.</p>
-            <p class="footer__meta">SYS.VERSION: 3.7.0 | UPTIME: 99.9%</p>
+            <p>© 2026 FORGESOFT / NIKITOSRUS01</p>
+            <p class="footer__meta">Спроектировано и разработано с точностью до миллиметра.</p>
         </div>
     </footer>
 
