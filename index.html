@@ -1,390 +1,359 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Никита — Инженер-разработчик БПЛА · CAD · Computer Vision</title>
-<meta name="description" content="Портфолио Никиты (nikitosrus01) — инженера-разработчика БПЛА: CAD, компьютерное зрение, навигация без GPS.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Никита · Инженер-разработчик БПЛА</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Фоновая координатная сетка -->
+    <div class="cad-grid-bg"></div>
+    <div class="hud-overlay"></div>
 
-<a class="skip-link" href="#main">Перейти к содержимому</a>
-
-<header class="site-header" id="top">
-  <div class="header-inner">
-    <a href="#top" class="logo">
-      <span class="logo-mark">N_</span>
-      <span class="logo-text">nikitosrus01</span>
-    </a>
-    <nav class="main-nav" aria-label="Основная навигация">
-      <a href="#about"><span class="nav-num">01</span>Обо мне</a>
-      <a href="#stack"><span class="nav-num">02</span>Стек</a>
-      <a href="#projects"><span class="nav-num">03</span>Проекты</a>
-      <a href="#achievements"><span class="nav-num">04</span>Достижения</a>
-      <a href="#partners"><span class="nav-num">05</span>Партнёры</a>
-      <a href="#sit"><span class="nav-num">06</span>S.I.T</a>
-      <a href="#contact"><span class="nav-num">07</span>Контакты</a>
+    <!-- Sticky Navigation -->
+    <nav class="nav-bar">
+        <div class="nav-brand">
+            <span class="hud-dot"></span>
+            <span class="mono-code">SYS.ID // NIKITA-UAV</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero"><span class="nav-num">01</span> HERO</a></li>
+            <li><a href="#stack"><span class="nav-num">02</span> СТЕК</a></li>
+            <li><a href="#projects"><span class="nav-num">03</span> ПРОЕКТЫ</a></li>
+            <li><a href="#experience"><span class="nav-num">04</span> ОПЫТ</a></li>
+            <li><a href="#partners"><span class="nav-num">05</span> S.I.T</a></li>
+            <li><a href="#contacts"><span class="nav-num">06</span> КОНТАКТЫ</a></li>
+        </ul>
     </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
 
-<main id="main">
+    <main class="container">
+        <!-- 01 HERO SECTION -->
+        <section id="hero" class="section hero-section">
+            <div class="section-tag"><span class="accent-text">§ 01</span> / TECHNICAL SPECIFICATION</div>
+            <div class="hero-grid">
+                <div class="hero-info">
+                    <div class="status-badge">
+                        <span class="status-light pulse"></span>
+                        <span class="mono-code">SYSTEM STATUS: ACTIVE // NO_GPS_NAV_ENABLED</span>
+                    </div>
+                    <h1 class="hero-title">Никита <span class="alias">· nikitosrus01</span></h1>
+                    <h2 class="hero-subtitle">Инженер-разработчик БПЛА · CAD · Computer Vision</h2>
+                    <p class="hero-bio">
+                        Ученик 10 класса школы №56 г. Челябинска. Разрабатываю БПЛА с 2023 года, специализируюсь на интеграции нейросетей, компьютерного зрения и систем навигации без GPS для мониторинга карьеров. База разработок — Кванториум Челябинск, научный руководитель Хужин А.Р.
+                    </p>
+                </div>
+                
+                <div class="hero-sight-wrapper">
+                    <div class="cad-viewport">
+                        <div class="cad-corner top-left"></div>
+                        <div class="cad-corner top-right"></div>
+                        <div class="cad-corner bottom-left"></div>
+                        <div class="cad-corner bottom-right"></div>
+                        
+                        <div class="hud-indicators">
+                            <span class="hud-tag">REC ●</span>
+                            <span class="hud-tag">GPS: LOCK OFF</span>
+                            <span class="hud-tag">ALT: 120m</span>
+                        </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-      <p class="eyebrow reveal">Инженер-разработчик БПЛА · CAD · Computer Vision</p>
-      <h1 class="hero-title reveal">
-        Привет, я Никита.<br>
-        <em>Строю БПЛА, которые видят.</em>
-      </h1>
-      <p class="hero-desc reveal">
-        Ученик 10 класса школы №56 г. Челябинска. Разрабатываю беспилотные летательные
-        аппараты с 2023 года — интеграция нейросетей, компьютерного зрения и навигации
-        без GPS для мониторинга карьеров и труднодоступных объектов.
-      </p>
-      <div class="hero-cta reveal">
-        <a href="#projects" class="btn btn-primary">Смотреть проекты ↘</a>
-        <a href="mailto:nikitosrus01@gmail.com" class="btn btn-ghost">Написать мне</a>
-      </div>
-    </div>
+                        <div class="sight-crosshair">
+                            <div class="crosshair-h"></div>
+                            <div class="crosshair-v"></div>
+                            <div class="sight-circle"></div>
+                        </div>
 
-    <div class="hero-terminal reveal" aria-hidden="true">
-      <div class="terminal-bar">
-        <span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span>
-        <span class="terminal-file">uav_core.py</span>
-      </div>
-      <div class="terminal-body">
-        <p><span class="t-prompt">root@nikitosrus01</span><span class="t-sep">:~$</span> ./init --modules=nav,cv,thermal</p>
-        <p class="t-out">&gt; загрузка модуля навигации без GPS... <span class="t-ok">OK</span></p>
-        <p class="t-out">&gt; подключение YOLO26 / тепловизор... <span class="t-ok">OK</span></p>
-        <p class="t-out">&gt; партнёр: ГОК «Томинский»</p>
-        <p class="t-status">status: <span class="t-accent">испытания прототипа</span><span class="cursor">_</span></p>
-      </div>
-    </div>
-  </section>
-
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>SolidWorks<i>✦</i>NX<i>✦</i>Femap<i>✦</i>ArduPilot<i>✦</i>Betaflight<i>✦</i>ROS/Gazebo<i>✦</i>YOLO<i>✦</i>OpenCV<i>✦</i>Python<i>✦</i>JavaScript<i>✦</i>Flask<i>✦</i>MQTT<i>✦</i>Agisoft Metashape<i>✦</i>Raspberry Pi<i>✦</i></span>
-      <span>SolidWorks<i>✦</i>NX<i>✦</i>Femap<i>✦</i>ArduPilot<i>✦</i>Betaflight<i>✦</i>ROS/Gazebo<i>✦</i>YOLO<i>✦</i>OpenCV<i>✦</i>Python<i>✦</i>JavaScript<i>✦</i>Flask<i>✦</i>MQTT<i>✦</i>Agisoft Metashape<i>✦</i>Raspberry Pi<i>✦</i></span>
-    </div>
-  </div>
-
-  <!-- 01 О СЕБЕ -->
-  <section class="section" id="about">
-    <div class="section-inner">
-      <p class="section-eyebrow reveal"><span class="section-num">01</span>Коротко обо мне</p>
-      <h2 class="section-title reveal">Разработка автономных систем <em>для труднодоступных объектов.</em></h2>
-
-      <div class="about-layout">
-        <div class="about-photo-wrap reveal">
-          <img class="about-photo" src="photo.jpg" alt="Фото Никиты, инженера-разработчика БПЛА">
-        </div>
-
-        <div class="about-content reveal">
-          <p class="about-text">
-            Разрабатываю БПЛА с 2023 года: от планера до систем навигации без GPS.
-            Специализируюсь на интеграции нейросетей, компьютерного зрения и автономных
-            алгоритмов для мониторинга карьеров и труднодоступных объектов. Базируюсь
-            в Кванториуме Челябинск, научный руководитель — Хужин А.Р.
-          </p>
-
-          <div class="fact-badges">
-            <div class="fact-badge">
-              <span class="fact-label">Класс</span>
-              <span class="fact-value">10 класс · школа №56</span>
+                        <img src="photo.jpg" alt="Никита - Инженер БПЛА" class="hero-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="photo-placeholder" style="display: none;">
+                            <span class="placeholder-initials">NR</span>
+                            <span class="mono-code">[PHOTO_NOT_FOUND]</span>
+                        </div>
+                        <div class="dimension-line line-x"><span>WIDTH: 450mm</span></div>
+                        <div class="dimension-line line-y"><span>HEIGHT: 600mm</span></div>
+                    </div>
+                </div>
             </div>
-            <div class="fact-badge">
-              <span class="fact-label">Город</span>
-              <span class="fact-value">Челябинск</span>
+
+            <!-- Таблица технических характеристик -->
+            <div class="spec-table-container">
+                <div class="spec-title"><span class="mono-code">// ТЕХНИЧЕСКИЙ ПАСПОРТ ОПЕРАТОРА</span></div>
+                <table class="spec-table">
+                    <thead>
+                        <tr>
+                            <th>ПАРАМЕТР</th>
+                            <th>ЗНАЧЕНИЕ SPEC</th>
+                            <th>ДОПОЛНИТЕЛЬНО</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="param-name">Объект</td>
+                            <td class="param-val">Никита (nikitosrus01)</td>
+                            <td class="param-extra">Developer ID #01</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">Статус</td>
+                            <td class="param-val">Студент / 10 класс</td>
+                            <td class="param-extra">Школа №56 г. Челябинск</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">Локация</td>
+                            <td class="param-val">Челябинск, РФ</td>
+                            <td class="param-extra">Кванториум Челябинск</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">Поле деятельности</td>
+                            <td class="param-val">БПЛА, Computer Vision, CAD</td>
+                            <td class="param-extra">Автономная навигация, ИИ</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">Годы активности</td>
+                            <td class="param-val">2023 — наст. время</td>
+                            <td class="param-extra">Науч. рук.: Хужин А.Р.</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="fact-badge">
-              <span class="fact-label">Специализация</span>
-              <span class="fact-value">БПЛА · CV · CAD</span>
+        </section>
+
+        <!-- 02 СТЕК SECTION -->
+        <section id="stack" class="section">
+            <div class="section-tag"><span class="accent-text">§ 02</span> / ENGINEERING STACK & HARDWARE</div>
+            <div class="stack-grid">
+                <div class="stack-card cad-frame">
+                    <div class="card-header">
+                        <span class="mono-code">[CAT.01]</span>
+                        <h3>CAD / Инженерия</h3>
+                    </div>
+                    <ul class="tech-list">
+                        <li><span class="tech-icon">📐</span> SolidWorks</li>
+                        <li><span class="tech-icon">⚙️</span> NX</li>
+                        <li><span class="tech-icon">📊</span> Femap</li>
+                    </ul>
+                </div>
+
+                <div class="stack-card cad-frame">
+                    <div class="card-header">
+                        <span class="mono-code">[CAT.02]</span>
+                        <h3>Языки / Веб</h3>
+                    </div>
+                    <ul class="tech-list">
+                        <li><span class="tech-icon">🐍</span> Python</li>
+                        <li><span class="tech-icon">⚡</span> JavaScript</li>
+                        <li><span class="tech-icon">🌐</span> HTML / CSS</li>
+                    </ul>
+                </div>
+
+                <div class="stack-card cad-frame span-2">
+                    <div class="card-header">
+                        <span class="mono-code">[CAT.03]</span>
+                        <h3>БПЛА / Computer Vision / Hardware</h3>
+                    </div>
+                    <div class="tech-chips">
+                        <span class="chip">ArduPilot</span>
+                        <span class="chip">Betaflight</span>
+                        <span class="chip">ROS / Gazebo</span>
+                        <span class="chip accent">YOLO</span>
+                        <span class="chip accent">OpenCV</span>
+                        <span class="chip">Flask</span>
+                        <span class="chip">MQTT</span>
+                        <span class="chip">Agisoft Metashape</span>
+                        <span class="chip">Raspberry Pi</span>
+                    </div>
+                </div>
             </div>
-            <div class="fact-badge">
-              <span class="fact-label">В разработке с</span>
-              <span class="fact-value">2023 года</span>
+        </section>
+
+        <!-- 03 ПРОЕКТЫ SECTION -->
+        <section id="projects" class="section">
+            <div class="section-tag"><span class="accent-text">§ 03</span> / PROJECT DOSSIER</div>
+            <div class="projects-grid">
+                
+                <!-- Project 1 -->
+                <article class="project-card cad-frame">
+                    <div class="project-header">
+                        <span class="proj-id">DOSSIER #01</span>
+                        <span class="proj-status status-active">ПРОТОТИП ИСПЫТАН</span>
+                    </div>
+                    <h3 class="proj-title">«Карьерист» — БПЛА для автоматического мониторинга карьеров</h3>
+                    <p class="proj-desc">
+                        Беспилотный комплекс для автономного мониторинга. Оснащен тепловизионной и RGB-камерами, нейросетью YOLO26 для автоматического поиска трещин и алгоритмом выявления тепловых аномалий. Имеет встроенный веб-сервис и способен полноценно работать в условиях подавления или отсутствия GPS.
+                    </p>
+                    <div class="proj-tags">
+                        <span>YOLO26</span>
+                        <span>Raspberry Pi</span>
+                        <span>Thermal Camera</span>
+                        <span>Flask</span>
+                        <span>Agisoft</span>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card cad-frame">
+                    <div class="project-header">
+                        <span class="proj-id">DOSSIER #02</span>
+                        <span class="proj-status status-done">ЗАВЕРШЁН</span>
+                    </div>
+                    <h3 class="proj-title">ИИ-навигация (ПАО «ОАК»)</h3>
+                    <p class="proj-desc">
+                        Система автономной навигации без использования GPS на основе компьютерного зрения. В рамках проекта выполнено обучение специализированной модели нейросети, проектирование 3D-моделей в CAD и симуляция полётных испытаний в среде Gazebo.
+                    </p>
+                    <div class="proj-tags">
+                        <span>YOLO</span>
+                        <span>ROS/Gazebo</span>
+                        <span>Python</span>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-card cad-frame">
+                    <div class="project-header">
+                        <span class="proj-id">DOSSIER #03</span>
+                        <span class="proj-status status-done">ИСПЫТАНИЯ ПРОЙДЕНЫ</span>
+                    </div>
+                    <h3 class="proj-title">Метеодрон для ООО «Cursis»</h3>
+                    <p class="proj-desc">
+                        Специализированный БПЛА для оперативного сбора метеоданных в сложных условиях. Построен на платформе ArduPilot с глубокой интеграцией телеметрических и метеорологических датчиков высокого разрешения.
+                    </p>
+                    <div class="proj-tags">
+                        <span>ArduPilot</span>
+                        <span>MQTT</span>
+                    </div>
+                </article>
+
+                <!-- Project 4 -->
+                <article class="project-card cad-frame">
+                    <div class="project-header">
+                        <span class="proj-id">DOSSIER #04</span>
+                        <span class="proj-status status-done">ЗАВЕРШЁН</span>
+                    </div>
+                    <h3 class="proj-title">Гидрогеомониторинг для ГОК «Томинский»</h3>
+                    <p class="proj-desc">
+                        Специализированный дрон для комплексной геомагнитной съёмки и точного поиска зон залегания подземных вод на территории горно-обогатительного комбината.
+                    </p>
+                    <div class="proj-tags">
+                        <span>Betaflight</span>
+                    </div>
+                </article>
+
             </div>
-          </div>
+        </section>
+
+        <!-- 04 ОПЫТ УЧАСТИЯ SECTION -->
+        <section id="experience" class="section">
+            <div class="section-tag"><span class="accent-text">§ 04</span> / TIMELINE & ACHIEVEMENTS</div>
+            <div class="timeline">
+                
+                <div class="timeline-group">
+                    <div class="timeline-year">2025 / 2026</div>
+                    <div class="timeline-items">
+                        <div class="timeline-card cad-frame">
+                            <div class="timeline-badge">ПРИЗЁР</div>
+                            <h4>«Большие вызовы»</h4>
+                            <p>Направление «Беспилотные и логистические системы».</p>
+                        </div>
+                        <div class="timeline-card cad-frame">
+                            <div class="timeline-badge">2 МЕСТО</div>
+                            <h4>«Инженерные кадры России»</h4>
+                            <p>Всероссийский этап соревнований.</p>
+                        </div>
+                        <div class="timeline-card cad-frame">
+                            <div class="timeline-badge">2 МЕСТО / ФИНАЛИСТ</div>
+                            <h4>«Архипелаг»</h4>
+                            <p>2 место в гонке дронов (75 мм), финалист ключевых интенсивов.</p>
+                        </div>
+                        <div class="timeline-card cad-frame">
+                            <div class="timeline-badge">1 МЕСТО (ЛИЧН.) / 3 МЕСТО (КОМ.)</div>
+                            <h4>«Соколиная охота»</h4>
+                            <p>1 место в личном зачёте, 3 место в командном первенстве.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-group">
+                    <div class="timeline-year">2024 / 2025</div>
+                    <div class="timeline-items">
+                        <div class="timeline-card cad-frame">
+                            <div class="timeline-badge">КЕЙС ПАО «ОАК»</div>
+                            <h4>«Большие вызовы»</h4>
+                            <p>Разработка и защита проекта автономной навигации БАС.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 05 S.I.T И ПАРТНЁРЫ SECTION -->
+        <section id="partners" class="section">
+            <div class="section-tag"><span class="accent-text">§ 05</span> / PARTNERS & LABS</div>
+            
+            <div class="partners-wrapper">
+                <div class="partners-list">
+                    <div class="partner-item cad-frame">
+                        <span class="mono-code">PARTNER // 01</span>
+                        <h4>ГОК «Томинский»</h4>
+                    </div>
+                    <div class="partner-item cad-frame">
+                        <span class="mono-code">PARTNER // 02</span>
+                        <h4>ПАО «ОАК»</h4>
+                    </div>
+                    <div class="partner-item cad-frame">
+                        <span class="mono-code">PARTNER // 03</span>
+                        <h4>Кванториум Челябинск</h4>
+                    </div>
+                </div>
+
+                <div class="sit-block cad-frame">
+                    <div class="sit-header">
+                        <span class="hud-dot"></span>
+                        <span class="mono-code">TECH PROJECT // S.I.T</span>
+                    </div>
+                    <h3>Участник проекта S.I.T</h3>
+                    <p>
+                        S.I.T — это экосистема продуктов для разработчиков, объединяющая передовые инженерные модули и программные решения. В рамках инициативы мы создаём решения, облегчающие проектирование и интеграцию беспилотных систем, объединяя аппаратную часть и алгоритмы искусственного интеллекта.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 06 КОНТАКТЫ SECTION -->
+        <section id="contacts" class="section">
+            <div class="section-tag"><span class="accent-text">§ 06</span> / CONTACT SPECIFICATION</div>
+            
+            <div class="contact-card cad-frame">
+                <div class="contact-header">
+                    <span class="mono-code">COMMUNICATION_CHANNEL // DIRECT</span>
+                    <span class="status-light pulse"></span>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <span class="contact-label">EMAIL:</span>
+                        <a href="mailto:nikitosrus01@gmail.com" class="contact-value">nikitosrus01@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">TELEGRAM:</span>
+                        <a href="https://t.me/nikitosrus01" target="_blank" class="contact-value">@nikitosrus01</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">GITHUB:</span>
+                        <a href="https://github.com/nikitosrus01" target="_blank" class="contact-value">github.com/nikitosrus01</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <span class="mono-code">SYSTEM VER: 2026.1 // CAD PORTFOLIO</span>
+            <span class="mono-code">ENGINEER: NIKITA</span>
         </div>
-      </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- 02 СТЕК -->
-  <section class="section" id="stack">
-    <div class="section-inner">
-      <p class="section-eyebrow reveal"><span class="section-num">02</span>Стек и инструменты</p>
-      <h2 class="section-title reveal">Инструменты, на которых <em>строятся мои проекты.</em></h2>
-
-      <div class="stack-cards-grid">
-
-        <div class="stack-card reveal">
-          <h3><span class="stack-icon">🛠</span>CAD / Инженерия</h3>
-          <div class="pill-row">
-            <span class="pill">SolidWorks</span><span class="pill">NX</span><span class="pill">Femap</span>
-          </div>
-        </div>
-
-        <div class="stack-card reveal">
-          <h3><span class="stack-icon">💻</span>Языки / Веб</h3>
-          <div class="pill-row">
-            <span class="pill">Python</span><span class="pill">JavaScript</span><span class="pill">HTML</span><span class="pill">CSS</span>
-          </div>
-        </div>
-
-        <div class="stack-card reveal">
-          <h3><span class="stack-icon">🚁</span>БПЛА / Embedded</h3>
-          <div class="pill-row">
-            <span class="pill">ArduPilot</span><span class="pill">Betaflight</span><span class="pill">ROS/Gazebo</span>
-            <span class="pill">Raspberry Pi</span><span class="pill">MQTT</span>
-          </div>
-        </div>
-
-        <div class="stack-card reveal">
-          <h3><span class="stack-icon">🤖</span>AI / CV</h3>
-          <div class="pill-row">
-            <span class="pill">YOLO</span><span class="pill">OpenCV</span><span class="pill">Agisoft Metashape</span>
-          </div>
-        </div>
-
-        <div class="stack-card reveal">
-          <h3><span class="stack-icon">⚙️</span>Инструменты</h3>
-          <div class="pill-row">
-            <span class="pill">Flask</span><span class="pill">Git</span><span class="pill">GitHub Pages</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- 03 ПРОЕКТЫ -->
-  <section class="section" id="projects">
-    <div class="section-inner">
-      <p class="section-eyebrow reveal"><span class="section-num">03</span>Избранные проекты</p>
-      <h2 class="section-title reveal">Личные и <em>партнёрские разработки БПЛА.</em></h2>
-
-      <div class="project-grid">
-
-        <article class="project-card reveal">
-          <div class="project-head">
-            <span class="project-index">01</span>
-            <span class="status-badge status-proto">прототип испытан</span>
-          </div>
-          <h3>«Карьерист»</h3>
-          <p class="project-desc">
-            БПЛА для автоматического мониторинга карьеров: тепловизионная и RGB-камеры,
-            нейросеть YOLO26 для поиска трещин, алгоритм выявления тепловых аномалий,
-            веб-сервис визуализации. Работает без GPS. Партнёр — ГОК «Томинский».
-          </p>
-          <div class="pill-row mono">
-            <span class="pill">YOLO26</span><span class="pill">Raspberry Pi</span>
-            <span class="pill">Thermal Camera</span><span class="pill">Flask</span><span class="pill">Agisoft</span>
-          </div>
-        </article>
-
-        <article class="project-card reveal">
-          <div class="project-head">
-            <span class="project-index">02</span>
-            <span class="status-badge status-done">завершён · испытания пройдены</span>
-          </div>
-          <h3>ИИ-навигация</h3>
-          <p class="project-eyebrow-small">ПАО «ОАК»</p>
-          <p class="project-desc">
-            Навигация без GPS на основе компьютерного зрения: обучение модели,
-            проектирование 3D-моделей в CAD, испытания в симуляторе Gazebo.
-          </p>
-          <div class="pill-row mono">
-            <span class="pill">YOLO</span><span class="pill">ROS/Gazebo</span><span class="pill">Python</span>
-          </div>
-        </article>
-
-        <article class="project-card reveal">
-          <div class="project-head">
-            <span class="project-index">03</span>
-            <span class="status-badge status-done">завершён · испытания пройдены</span>
-          </div>
-          <h3>Метеодрон</h3>
-          <p class="project-eyebrow-small">ООО «Cursis»</p>
-          <p class="project-desc">
-            БПЛА для автоматического сбора метеоданных: полётный контроллер ArduPilot,
-            интеграция и калибровка датчиков в реальных условиях.
-          </p>
-          <div class="pill-row mono">
-            <span class="pill">ArduPilot</span><span class="pill">MQTT</span>
-          </div>
-        </article>
-
-        <article class="project-card reveal">
-          <div class="project-head">
-            <span class="project-index">04</span>
-            <span class="status-badge status-done">завершён</span>
-          </div>
-          <h3>Гидрогеомониторинг</h3>
-          <p class="project-eyebrow-small">ГОК «Томинский»</p>
-          <p class="project-desc">
-            Дрон для геомагнитной съёмки и поиска подземных вод на территории карьера,
-            управляется вручную для точного облёта участков.
-          </p>
-          <div class="pill-row mono">
-            <span class="pill">Betaflight</span><span class="pill">ручное управление</span>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- 04 ДОСТИЖЕНИЯ -->
-  <section class="section" id="achievements">
-    <div class="section-inner">
-      <p class="section-eyebrow reveal"><span class="section-num">04</span>Соревнования и достижения</p>
-      <h2 class="section-title reveal">Опыт участия в <em>инженерных соревнованиях.</em></h2>
-
-      <div class="timeline-vertical">
-
-        <div class="timeline-card reveal">
-          <span class="timeline-marker"></span>
-          <span class="timeline-period">2025/2026</span>
-          <span class="result-badge badge-accent">🏆 Призёр</span>
-          <h3>«Большие вызовы» 2025/2026</h3>
-          <p>Призёр направления «Беспилотные и логистические системы».</p>
-        </div>
-
-        <div class="timeline-card reveal">
-          <span class="timeline-marker"></span>
-          <span class="timeline-period">2026</span>
-          <span class="result-badge badge-accent">🚀 Кейс реализован</span>
-          <h3>Кейс ПАО «ОАК»</h3>
-          <p>В рамках «Больших вызовов» — разработка автономной навигации БАС.</p>
-        </div>
-
-        <div class="timeline-card reveal">
-          <span class="timeline-marker"></span>
-          <span class="timeline-period">2025</span>
-          <span class="result-badge badge-silver">🥈 2 место</span>
-          <h3>«Инженерные кадры России»</h3>
-          <p>2 место на всероссийском этапе конкурса.</p>
-        </div>
-
-        <div class="timeline-card reveal">
-          <span class="timeline-marker"></span>
-          <span class="timeline-period">2025</span>
-          <span class="result-badge badge-gold">🥇 1 место</span>
-          <h3>«Соколиная охота»</h3>
-          <p>Всероссийский чемпионат: 1 место в личном зачёте, 3 место в командном.</p>
-        </div>
-
-        <div class="timeline-card reveal">
-          <span class="timeline-marker"></span>
-          <span class="timeline-period">2024/2025</span>
-          <span class="result-badge badge-silver">🥈 2 место</span>
-          <h3>«Архипелаг»</h3>
-          <p>2 место в гонке дронов (класс 75 мм), финалист интенсива.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- 05 ПАРТНЁРЫ -->
-  <section class="section" id="partners">
-    <div class="section-inner">
-      <p class="section-eyebrow reveal"><span class="section-num">05</span>Партнёры и наставники</p>
-      <h2 class="section-title reveal">Организации, с которыми <em>я работал и учился.</em></h2>
-
-      <div class="partner-grid">
-
-        <article class="partner-card reveal">
-          <h3>ГОК «Томинский» (РМК)</h3>
-          <p class="partner-desc">Партнёр для испытаний дрона геомониторинга и гидрогеологической разведки на территории карьера.</p>
-        </article>
-
-        <article class="partner-card reveal">
-          <h3>ПАО «ОАК»</h3>
-          <p class="partner-desc">Разработка ИИ-навигации без GPS в рамках кейса «Большие вызовы».</p>
-        </article>
-
-        <article class="partner-card reveal">
-          <h3>Кванториум Челябинск</h3>
-          <p class="partner-desc">Научный руководитель — Хужин А.Р. База для разработки и испытаний прототипов БПЛА.</p>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- 06 S.I.T -->
-  <section class="section" id="sit">
-    <div class="section-inner">
-      <p class="section-eyebrow reveal"><span class="section-num">06</span>Личный / командный проект</p>
-      <h2 class="section-title reveal">Участвую в развитии <em>проекта S.I.T.</em></h2>
-
-      <div class="sit-block reveal">
-        <div class="sit-text">
-          <p>
-            S.I.T — технологический проект, в разработке которого я участвую наравне с
-            другими инженерами: команда создаёт инструменты для разработчиков,
-            проектирует электронные устройства и собирает робототехнические системы.
-          </p>
-          <p>
-            Наработки команды проверяются на инженерных соревнованиях и хакатонах —
-            в том числе часть моих собственных решений по навигации и компьютерному
-            зрению для БПЛА выросла именно из этой работы.
-          </p>
-          <div class="pill-row mono">
-            <span class="pill">Developer tools</span><span class="pill">Devices</span>
-            <span class="pill">Robotics</span><span class="pill">Competitions</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 07 КОНТАКТЫ -->
-  <section class="section" id="contact">
-    <div class="section-inner">
-      <p class="section-eyebrow reveal"><span class="section-num">07</span>Контакты</p>
-      <h2 class="section-title reveal">Есть интересная задача? <em>Давайте обсудим.</em></h2>
-      <p class="contact-lead reveal">Открыт к стажировкам, совместным разработкам и инженерным соревнованиям.</p>
-
-      <div class="contact-grid">
-        <a class="contact-card reveal" href="mailto:nikitosrus01@gmail.com">
-          <span class="card-label">Email</span>
-          <h3>nikitosrus01@gmail.com</h3>
-          <span class="contact-arrow">↗</span>
-        </a>
-        <a class="contact-card reveal" href="https://t.me/nikitosrus01" target="_blank" rel="noopener">
-          <span class="card-label">Telegram</span>
-          <h3>@nikitosrus01</h3>
-          <span class="contact-arrow">↗</span>
-        </a>
-        <a class="contact-card reveal" href="https://github.com/nikitosrus01" target="_blank" rel="noopener">
-          <span class="card-label">GitHub</span>
-          <h3>nikitosrus01</h3>
-          <span class="contact-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <p>© 2026 nikitosrus01 · Built with ❤️</p>
-  <a href="#top" class="back-top">Наверх ↑</a>
-</footer>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
