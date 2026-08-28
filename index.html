@@ -1,441 +1,979 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="dark light">
-    <meta name="description" content="Инженер-разработчик БПЛА Никита Голубицкий — CAD, Computer Vision, автономная навигация.">
-    <title>forgesoft / uav_lab — Никита Голубицкий</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Portfolio FullStack/Embedded разработчика. ROS, C++, Python, React. Участник хакатонов и инженерных соревнований.">
+    <title>Portfolio | FullStack & Embedded Developer</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Manrope', 'sans-serif'],
+                    },
+                    colors: {
+                        bg: {
+                            primary: '#0a0a0a',
+                            secondary: '#111111',
+                            tertiary: '#1a1a1a',
+                        },
+                        accent: {
+                            green: '#00ff88',
+                            blue: '#00d4ff',
+                        },
+                        border: {
+                            light: '#262626',
+                            medium: '#333333',
+                        },
+                        text: {
+                            primary: '#ffffff',
+                            secondary: '#e5e5e5',
+                            muted: '#a3a3a3',
+                        }
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        'md': '8px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px -10px rgba(0, 255, 136, 0.1);
+        }
+        
+        .border-gradient {
+            position: relative;
+            background: linear-gradient(#111111, #111111) padding-box,
+                        linear-gradient(135deg, #262626, #333333) border-box;
+            border: 1px solid transparent;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00ff88;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .tech-tag {
+            transition: all 0.2s ease;
+        }
+        
+        .tech-tag:hover {
+            background: #00ff88;
+            color: #0a0a0a;
+            transform: translateY(-2px);
+        }
+        
+        .project-card {
+            border: 1px solid #262626;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            border-color: #00ff88;
+            transform: translateY(-4px);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            background: #00ff88;
+            border-radius: 50%;
+        }
+        
+        .hero-grid {
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        .pixel-frog {
+            image-rendering: pixelated;
+        }
+    </style>
 </head>
-<body>
-    <div class="site-noise" aria-hidden="true"></div>
-    <div class="cursor-crosshair" aria-hidden="true"></div>
+<body class="antialiased overflow-x-hidden">
 
-    <header class="site-header" id="top">
-        <a class="brand" href="#hero" aria-label="На главную">
-            <span class="brand-main">forgesoft</span>
-            <span class="brand-separator">/</span>
-            <span class="brand-sub">uav_lab</span>
-        </a>
-
-        <button class="mobile-menu-button" type="button" aria-label="Открыть меню" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <nav class="main-nav" aria-label="Основная навигация">
-            <a href="#hero" data-section="hero"><span>01</span> ИНФО</a>
-            <a href="#stack" data-section="stack"><span>02</span> СТЕК</a>
-            <a href="#projects" data-section="projects"><span>03</span> ПРОЕКТЫ</a>
-            <a href="#articles" data-section="articles"><span>04</span> СТАТЬИ</a>
-            <a href="#experience" data-section="experience"><span>05</span> ОПЫТ</a>
-            <a href="#sit" data-section="sit"><span>06</span> S.I.T</a>
-            <a href="#contacts" data-section="contacts"><span>07</span> КОНТАКТЫ</a>
-        </nav>
-
-        <button class="theme-toggle" type="button" aria-label="Переключить тему">
-            <span class="theme-icon">◐</span>
-            <span class="theme-label">DARK</span>
-        </button>
-    </header>
-
-    <main>
-        <section class="hero section-grid" id="hero">
-            <div class="section-code">SYS // PROFILE_001</div>
-
-            <div class="hero-content reveal">
-                <div class="eyebrow">
-                    <span class="status-dot"></span>
-                    UAV ENGINEERING PROFILE
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-bg-primary/90 backdrop-blur-md border-b border-border-light z-50" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 font-display font-bold text-xl tracking-tight">
+                    <span class="text-accent-green">A</span>.<span class="text-accent-blue">D</span>
                 </div>
-
-                <h1>Никита <span>·</span> <em>nikitosrus01</em></h1>
-
-                <p class="hero-role">
-                    Инженер-разработчик БПЛА
-                    <span>·</span> CAD
-                    <span>·</span> Computer Vision
-                </p>
-
-                <p class="hero-description">
-                    Ученик 10 класса школы №56 г. Челябинска. Разрабатываю БПЛА
-                    с 2023 года. Специализируюсь на интеграции нейросетей,
-                    компьютерного зрения и систем навигации без GPS для мониторинга
-                    карьеров. База разработок — Кванториум Челябинск,
-                    научный руководитель Хужин А.Р.
-                </p>
-
-                <div class="hero-actions">
-                    <a class="button button-primary" href="#projects">
-                        <span>СМОТРЕТЬ ПРОЕКТЫ</span>
-                        <span class="button-arrow">↗</span>
-                    </a>
-                    <a class="button button-secondary" href="#contacts">
-                        СВЯЗАТЬСЯ
-                    </a>
-                </div>
-            </div>
-
-            <div class="hero-visual reveal reveal-delay">
-                <div class="target-frame">
-                    <div class="corner corner-tl"></div>
-                    <div class="corner corner-tr"></div>
-                    <div class="corner corner-bl"></div>
-                    <div class="corner corner-br"></div>
-
-                    <div class="target-line target-line-top"></div>
-                    <div class="target-line target-line-bottom"></div>
-                    <div class="target-line target-line-left"></div>
-                    <div class="target-line target-line-right"></div>
-
-                    <div class="target-crosshair">
-                        <span></span>
-                        <span></span>
-                    </div>
-
-                    <div class="avatar-container">
-                        <img
-                            src="photo.jpg"
-                            alt="Фото Никиты Голубицкого"
-                            class="avatar-image"
-                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                        >
-                        <div class="avatar-placeholder" aria-label="Аватар Никиты">
-                            <span>Н</span>
-                            <small>N / 01</small>
-                        </div>
-                    </div>
-
-                    <div class="frame-label frame-label-top">CAM_01 // ACTIVE</div>
-                    <div class="frame-label frame-label-bottom">55°09'52"N / 61°26'12"E</div>
-                </div>
-
-                <div class="visual-side-label">VISUAL<br>LOCATOR</div>
-            </div>
-
-            <div class="specification-panel reveal">
-                <div class="panel-heading">
-                    <span>TECHNICAL SPECIFICATION</span>
-                    <span class="panel-number">REF. 001-A</span>
-                </div>
-
-                <div class="specification-grid">
-                    <div class="spec-item">
-                        <span class="spec-label">ОБЪЕКТ</span>
-                        <strong>Никита</strong>
-                    </div>
-                    <div class="spec-item">
-                        <span class="spec-label">СТАТУС</span>
-                        <strong>Студент / 10 класс</strong>
-                    </div>
-                    <div class="spec-item">
-                        <span class="spec-label">ЛОКАЦИЯ</span>
-                        <strong>Челябинск</strong>
-                    </div>
-                    <div class="spec-item">
-                        <span class="spec-label">ПОЛЕ</span>
-                        <strong>БПЛА / CV</strong>
-                    </div>
-                    <div class="spec-item">
-                        <span class="spec-label">ПЕРИОД АКТИВНОСТИ</span>
-                        <strong>2023 — наст. время</strong>
-                    </div>
-                    <div class="spec-item spec-coordinates">
-                        <span class="spec-label">КООРДИНАТЫ</span>
-                        <strong>55.1644° N, 61.4368° E</strong>
-                        <span class="online-status"><i></i> SYS.ONLINE</span>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about" class="nav-link text-text-secondary hover:text-text-primary px-3 py-2 text-sm font-medium transition-colors">Обо мне</a>
+                        <a href="#experience" class="nav-link text-text-secondary hover:text-text-primary px-3 py-2 text-sm font-medium transition-colors">Опыт</a>
+                        <a href="#projects" class="nav-link text-text-secondary hover:text-text-primary px-3 py-2 text-sm font-medium transition-colors">Проекты</a>
+                        <a href="#hackathons" class="nav-link text-text-secondary hover:text-text-primary px-3 py-2 text-sm font-medium transition-colors">Хакатоны</a>
+                        <a href="#frogeesoft" class="nav-link text-text-secondary hover:text-accent-green px-3 py-2 text-sm font-medium transition-colors">FrogeeSoft</a>
+                        <a href="#contact" class="nav-link text-text-secondary hover:text-text-primary px-3 py-2 text-sm font-medium transition-colors">Контакты</a>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section class="content-section section-grid" id="stack">
-            <div class="section-code">SYS // STACK_002</div>
-
-            <div class="section-heading reveal">
-                <span class="section-index">02</span>
-                <div>
-                    <p class="eyebrow">ENGINEERING TOOLKIT</p>
-                    <h2>Технический стек</h2>
-                </div>
-            </div>
-
-            <div class="stack-table reveal">
-                <div class="stack-row">
-                    <div class="stack-category">
-                        <span class="category-marker">A</span>
-                        <span>CAD / ИНЖЕНЕРИЯ</span>
-                    </div>
-                    <div class="stack-items">
-                        <span>SolidWorks</span>
-                        <span>NX</span>
-                        <span>Femap</span>
-                    </div>
-                </div>
-
-                <div class="stack-row">
-                    <div class="stack-category">
-                        <span class="category-marker">B</span>
-                        <span>ЯЗЫКИ / ВЕБ</span>
-                    </div>
-                    <div class="stack-items">
-                        <span>Python</span>
-                        <span>JavaScript</span>
-                        <span>HTML</span>
-                        <span>CSS</span>
-                    </div>
-                </div>
-
-                <div class="stack-row">
-                    <div class="stack-category">
-                        <span class="category-marker">C</span>
-                        <span>БПЛА / COMPUTER VISION</span>
-                    </div>
-                    <div class="stack-items">
-                        <span>ArduPilot</span>
-                        <span>Betaflight</span>
-                        <span>ROS / Gazebo</span>
-                        <span>YOLO</span>
-                        <span>OpenCV</span>
-                        <span>Flask</span>
-                        <span>MQTT</span>
-                        <span>Agisoft Metashape</span>
-                        <span>Raspberry Pi</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid-decoration decoration-stack" aria-hidden="true">
-                <span>01</span><span>02</span><span>03</span><span>04</span>
-            </div>
-        </section>
-
-        <section class="content-section section-grid" id="projects">
-            <div class="section-code">SYS // PROJECTS_003</div>
-
-            <div class="section-heading reveal">
-                <span class="section-index">03</span>
-                <div>
-                    <p class="eyebrow">SELECTED DEVELOPMENT</p>
-                    <h2>Проекты</h2>
-                </div>
-            </div>
-
-            <div class="project-grid">
-                <article class="project-card tilt-card reveal">
-                    <div class="card-topline">
-                        <span>PROJECT FILE / 001</span>
-                        <span>REV. 03</span>
-                    </div>
-
-                    <div class="project-card-content">
-                        <div class="project-visual">
-                            <div class="drone-schematic">
-                                <div class="drone-body"></div>
-                                <div class="drone-wing drone-wing-left"></div>
-                                <div class="drone-wing drone-wing-right"></div>
-                                <div class="drone-prop prop-one"></div>
-                                <div class="drone-prop prop-two"></div>
-                                <div class="drone-prop prop-three"></div>
-                                <div class="drone-prop prop-four"></div>
-                                <div class="schematic-line schematic-line-one"></div>
-                                <div class="schematic-line schematic-line-two"></div>
-                                <span class="dimension dimension-x">450 mm</span>
-                                <span class="dimension dimension-y">120 mm</span>
-                            </div>
-                            <span class="visual-stamp">FIELD<br>TESTED</span>
-                        </div>
-
-                        <div class="project-info">
-                            <div class="project-status">
-                                <i></i> ПРОТОТИП ИСПЫТАН
-                            </div>
-                            <h3>«Карьерист»</h3>
-                            <p>
-                                БПЛА для автоматического мониторинга карьеров:
-                                тепловизионная и RGB-камеры, YOLO26 для поиска
-                                трещин, алгоритм выявления тепловых аномалий,
-                                веб-сервис и работа без GPS.
-                            </p>
-
-                            <div class="tag-list">
-                                <span>YOLO26</span>
-                                <span>Raspberry Pi</span>
-                                <span>Thermal Camera</span>
-                                <span>Flask</span>
-                                <span>Agisoft</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-footer">
-                        <span>UAV / AUTONOMOUS MONITORING</span>
-                        <span class="card-arrow">↗</span>
-                    </div>
-                </article>
-
-                <article class="project-card project-card-empty reveal">
-                    <div class="empty-crosshair">+</div>
-                    <p>Следующий проект<br>в разработке</p>
-                    <span>STATUS / QUEUED</span>
-                </article>
-            </div>
-        </section>
-
-        <section class="content-section compact-section section-grid" id="articles">
-            <div class="section-code">SYS // ARTICLES_004</div>
-
-            <div class="section-heading reveal">
-                <span class="section-index">04</span>
-                <div>
-                    <p class="eyebrow">KNOWLEDGE BASE</p>
-                    <h2>Статьи и заметки</h2>
-                </div>
-            </div>
-
-            <div class="article-list reveal">
-                <a class="article-row" href="#contacts">
-                    <span class="article-number">01</span>
-                    <span class="article-title">Навигация БПЛА без GPS: подходы и ограничения</span>
-                    <span class="article-meta">RESEARCH / 2025</span>
-                    <span class="article-arrow">↗</span>
-                </a>
-                <a class="article-row" href="#contacts">
-                    <span class="article-number">02</span>
-                    <span class="article-title">Детекция трещин на поверхности карьера</span>
-                    <span class="article-meta">COMPUTER VISION / 2025</span>
-                    <span class="article-arrow">↗</span>
-                </a>
-                <a class="article-row" href="#contacts">
-                    <span class="article-number">03</span>
-                    <span class="article-title">Сборка автономной системы мониторинга</span>
-                    <span class="article-meta">UAV SYSTEMS / 2024</span>
-                    <span class="article-arrow">↗</span>
-                </a>
-            </div>
-        </section>
-
-        <section class="content-section compact-section section-grid" id="experience">
-            <div class="section-code">SYS // EXPERIENCE_005</div>
-
-            <div class="section-heading reveal">
-                <span class="section-index">05</span>
-                <div>
-                    <p class="eyebrow">DEVELOPMENT TIMELINE</p>
-                    <h2>Опыт</h2>
-                </div>
-            </div>
-
-            <div class="timeline reveal">
-                <div class="timeline-item">
-                    <span class="timeline-year">2023</span>
-                    <div>
-                        <h3>Старт разработки БПЛА</h3>
-                        <p>Освоение CAD, базовой электроники, полётных контроллеров и принципов аэродинамики.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-year">2024</span>
-                    <div>
-                        <h3>Кванториум Челябинск</h3>
-                        <p>Разработка систем компьютерного зрения и интеграция Raspberry Pi в беспилотные системы.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-year">2025 — now</span>
-                    <div>
-                        <h3>«Карьерист»</h3>
-                        <p>Интеграция CV-моделей, тепловизионного мониторинга и автономной навигации без GPS.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section sit-section section-grid" id="sit">
-            <div class="section-code">SYS // S.I.T_006</div>
-
-            <div class="sit-panel reveal">
-                <div class="sit-header">
-                    <span class="eyebrow">SYSTEM INTEGRATION TEST</span>
-                    <span class="sit-status"><i></i> ALL SYSTEMS NOMINAL</span>
-                </div>
-                <div class="sit-content">
-                    <div class="sit-big-number">S.I.T</div>
-                    <div class="sit-description">
-                        <h2>Собираю системы,<br>а не отдельные детали.</h2>
-                        <p>
-                            От 3D-модели и электроники до нейросетевого анализа
-                            данных и интерфейса оператора. Каждый компонент
-                            должен работать как часть единого инженерного решения.
-                        </p>
-                    </div>
-                </div>
-                <div class="sit-coordinates">X: 055.1644 / Y: 061.4368 / Z: 218.00</div>
-            </div>
-        </section>
-
-        <section class="content-section contacts-section section-grid" id="contacts">
-            <div class="section-code">SYS // CONTACTS_007</div>
-
-            <div class="section-heading reveal">
-                <span class="section-index">07</span>
-                <div>
-                    <p class="eyebrow">OPEN COMMUNICATION CHANNEL</p>
-                    <h2>Контакты</h2>
-                </div>
-            </div>
-
-            <div class="contacts-layout reveal">
-                <div class="contact-intro">
-                    <p>
-                        Есть инженерная задача, проект или идея для БПЛА?
-                        Открыт к обсуждению технических решений.
-                    </p>
-                    <div class="contact-signal">
-                        <i></i>
-                        CHANNEL AVAILABLE
-                    </div>
-                </div>
-
-                <div class="contact-links">
-                    <a class="contact-link" href="https://github.com/nikitosrus01" target="_blank" rel="noopener noreferrer">
-                        <span class="contact-type">GITHUB</span>
-                        <span class="contact-value">github.com/nikitosrus01</span>
-                        <span class="contact-arrow">↗</span>
-                    </a>
-
-                    <a class="contact-link" href="https://t.me/nikitosrus01" target="_blank" rel="noopener noreferrer">
-                        <span class="contact-type">TELEGRAM</span>
-                        <span class="contact-value">@nikitosrus01</span>
-                        <span class="contact-arrow">↗</span>
-                    </a>
-
-                    <button class="contact-link copy-email" type="button" data-copy="nikitosrus01@example.com">
-                        <span class="contact-type">EMAIL</span>
-                        <span class="contact-value">nikitosrus01@example.com</span>
-                        <span class="contact-arrow">COPY</span>
+                
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-text-secondary hover:text-text-primary p-2">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
                 </div>
             </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="footer-brand">forgesoft / uav_lab</div>
-        <div class="footer-time">
-            <span>UTC <strong id="utc-time">--:--:--</strong></span>
-            <span>MSK <strong id="msk-time">--:--:--</strong></span>
         </div>
-        <div class="footer-copy">© 2023—2026 NIKITA GOLUBITSKY</div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-bg-secondary border-b border-border-light">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="text-text-secondary hover:text-text-primary block px-3 py-2 text-base font-medium">Обо мне</a>
+                <a href="#experience" class="text-text-secondary hover:text-text-primary block px-3 py-2 text-base font-medium">Опыт</a>
+                <a href="#projects" class="text-text-secondary hover:text-text-primary block px-3 py-2 text-base font-medium">Проекты</a>
+                <a href="#hackathons" class="text-text-secondary hover:text-text-primary block px-3 py-2 text-base font-medium">Хакатоны</a>
+                <a href="#frogeesoft" class="text-text-secondary hover:text-accent-green block px-3 py-2 text-base font-medium">FrogeeSoft</a>
+                <a href="#contact" class="text-text-secondary hover:text-text-primary block px-3 py-2 text-base font-medium">Контакты</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-16 hero-grid overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-bg-primary/50 to-bg-primary pointer-events-none"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-sm border border-border-light bg-bg-tertiary mb-6">
+                        <span class="w-2 h-2 rounded-full bg-accent-green animate-pulse"></span>
+                        <span class="text-sm text-text-muted">Открыт к предложениям</span>
+                    </div>
+                    
+                    <h1 class="font-display text-5xl md:text-7xl font-bold leading-tight mb-6">
+                        <span class="block text-text-primary">Александр</span>
+                        <span class="block gradient-text">Дмитриев</span>
+                    </h1>
+                    
+                    <p class="text-xl md:text-2xl text-text-muted mb-4 font-light">
+                        FullStack & Embedded Developer
+                    </p>
+                    
+                    <p class="text-text-secondary text-lg mb-8 max-w-lg leading-relaxed">
+                        Разрабатываю робототехнические системы, создаю веб-приложения и участвую в инженерных соревнованиях. Специализация: ROS, C++, Python, React.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 bg-accent-green text-bg-primary font-semibold rounded-sm hover:bg-accent-green/90 transition-all hover:scale-105">
+                            Смотреть проекты
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 border border-border-light text-text-primary font-semibold rounded-sm hover:border-accent-green hover:text-accent-green transition-all">
+                            Связаться
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hidden lg:block relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="relative w-full aspect-square max-w-md mx-auto">
+                        <div class="absolute inset-0 border border-border-light rounded-sm"></div>
+                        <div class="absolute inset-4 border border-border-medium rounded-sm"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="font-display text-8xl font-bold text-text-primary/10 mb-4">&lt;/&gt;</div>
+                                <div class="flex gap-2 justify-center">
+                                    <span class="px-3 py-1 border border-border-light rounded-sm text-sm text-text-muted">C++</span>
+                                    <span class="px-3 py-1 border border-border-light rounded-sm text-sm text-text-muted">Python</span>
+                                    <span class="px-3 py-1 border border-border-light rounded-sm text-sm text-text-muted">ROS</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Decorative elements -->
+                        <div class="absolute top-1/4 -left-4 w-20 h-20 border-l-2 border-t-2 border-accent-green/30"></div>
+                        <div class="absolute bottom-1/4 -right-4 w-20 h-20 border-r-2 border-b-2 border-accent-blue/30"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-6 h-6 text-text-muted"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-bg-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16" data-aos="fade-up">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-text-primary mb-4">Обо мне</h2>
+                <div class="w-16 h-1 bg-accent-green"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Education -->
+                <div class="space-y-8" data-aos="fade-right">
+                    <div class="border border-border-light rounded-sm p-6 bg-bg-tertiary">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-bg-primary border border-border-light rounded-sm">
+                                <i data-lucide="graduation-cap" class="w-6 h-6 text-accent-green"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-display text-lg font-semibold text-text-primary mb-1">[Название Университета]</h3>
+                                <p class="text-accent-blue text-sm mb-2">[Направление подготовки], [Курс] курс</p>
+                                <p class="text-text-muted text-sm">Средний балл: [X.X]</p>
+                                <p class="text-text-secondary text-sm mt-2">[Дополнительная информация об образовании]</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-border-light rounded-sm p-6 bg-bg-tertiary">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-bg-primary border border-border-light rounded-sm">
+                                <i data-lucide="award" class="w-6 h-6 text-accent-blue"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-display text-lg font-semibold text-text-primary mb-1">Дополнительное образование</h3>
+                                <ul class="text-text-secondary text-sm space-y-1">
+                                    <li>• [Курс/Сертификат 1]</li>
+                                    <li>• [Курс/Сертификат 2]</li>
+                                    <li>• [Курс/Сертификат 3]</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tech Stack -->
+                <div class="space-y-6" data-aos="fade-left">
+                    <div>
+                        <h3 class="font-display text-lg font-semibold text-text-primary mb-4 flex items-center gap-2">
+                            <i data-lucide="code" class="w-5 h-5 text-accent-green"></i>
+                            Languages
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">C</span>
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">C++</span>
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">Python</span>
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">JavaScript</span>
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">TypeScript</span>
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">SQL</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-display text-lg font-semibold text-text-primary mb-4 flex items-center gap-2">
+                            <i data-lucide="cpu" class="w-5 h-5 text-accent-blue"></i>
+                            Embedded & Robotics
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">ROS/ROS2</span>
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">ESP32</span>
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">Arduino</span>
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">MAVLink</span>
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">STM32</span>
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">Raspberry Pi</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-display text-lg font-semibold text-text-primary mb-4 flex items-center gap-2">
+                            <i data-lucide="brain" class="w-5 h-5 text-accent-green"></i>
+                            AI & Computer Vision
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">OpenCV</span>
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">YOLO</span>
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">PyTorch</span>
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">TensorFlow</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-display text-lg font-semibold text-text-primary mb-4 flex items-center gap-2">
+                            <i data-lucide="globe" class="w-5 h-5 text-accent-blue"></i>
+                            Web Development
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">React</span>
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">Next.js</span>
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">FastAPI</span>
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">Node.js</span>
+                            <span class="tech-tag px-3 py-1.5 border border-border-light rounded-sm text-sm text-text-secondary bg-bg-tertiary cursor-default">Tailwind CSS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-24 bg-bg-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16" data-aos="fade-up">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-text-primary mb-4">Опыт работы</h2>
+                <div class="w-16 h-1 bg-accent-blue"></div>
+            </div>
+            
+            <div class="space-y-8">
+                <!-- Experience Item 1 -->
+                <div class="relative pl-8 md:pl-0" data-aos="fade-up" data-aos-delay="100">
+                    <div class="md:grid md:grid-cols-12 gap-8 items-start">
+                        <div class="md:col-span-3 mb-2 md:mb-0">
+                            <div class="text-accent-green font-mono text-sm">2024 - 2025</div>
+                            <div class="text-text-muted text-sm mt-1">[Город/Remote]</div>
+                        </div>
+                        <div class="md:col-span-9 border border-border-light rounded-sm p-6 bg-bg-secondary hover-lift">
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <h3 class="font-display text-xl font-bold text-text-primary">[Название компании]</h3>
+                                    <p class="text-accent-blue mt-1">[Должность]</p>
+                                </div>
+                                <div class="hidden sm:block">
+                                    <!-- Company Logo Placeholder -->
+                                    <div class="w-12 h-12 border border-border-light rounded-sm flex items-center justify-center bg-bg-tertiary">
+                                        <i data-lucide="building-2" class="w-6 h-6 text-text-muted"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="space-y-2 text-text-secondary">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent-green mt-1.5">•</span>
+                                    <span>[Достижение/обязанность 1 с указанием технологий]</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent-green mt-1.5">•</span>
+                                    <span>[Достижение/обязанность 2 с указанием технологий]</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent-green mt-1.5">•</span>
+                                    <span>[Достижение/обязанность 3 с указанием технологий]</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience Item 2 -->
+                <div class="relative pl-8 md:pl-0" data-aos="fade-up" data-aos-delay="200">
+                    <div class="md:grid md:grid-cols-12 gap-8 items-start">
+                        <div class="md:col-span-3 mb-2 md:mb-0">
+                            <div class="text-accent-blue font-mono text-sm">2023 - 2024</div>
+                            <div class="text-text-muted text-sm mt-1">[Город/Remote]</div>
+                        </div>
+                        <div class="md:col-span-9 border border-border-light rounded-sm p-6 bg-bg-secondary hover-lift">
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <h3 class="font-display text-xl font-bold text-text-primary">[Название компании]</h3>
+                                    <p class="text-accent-green mt-1">[Должность]</p>
+                                </div>
+                                <div class="hidden sm:block">
+                                    <div class="w-12 h-12 border border-border-light rounded-sm flex items-center justify-center bg-bg-tertiary">
+                                        <i data-lucide="building-2" class="w-6 h-6 text-text-muted"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="space-y-2 text-text-secondary">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent-blue mt-1.5">•</span>
+                                    <span>[Достижение/обязанность 1]</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent-blue mt-1.5">•</span>
+                                    <span>[Достижение/обязанность 2]</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience Item 3 -->
+                <div class="relative pl-8 md:pl-0" data-aos="fade-up" data-aos-delay="300">
+                    <div class="md:grid md:grid-cols-12 gap-8 items-start">
+                        <div class="md:col-span-3 mb-2 md:mb-0">
+                            <div class="text-accent-green font-mono text-sm">2022 - 2023</div>
+                            <div class="text-text-muted text-sm mt-1">[Город/Remote]</div>
+                        </div>
+                        <div class="md:col-span-9 border border-border-light rounded-sm p-6 bg-bg-secondary hover-lift">
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <h3 class="font-display text-xl font-bold text-text-primary">[Название компании]</h3>
+                                    <p class="text-accent-blue mt-1">[Должность]</p>
+                                </div>
+                                <div class="hidden sm:block">
+                                    <div class="w-12 h-12 border border-border-light rounded-sm flex items-center justify-center bg-bg-tertiary">
+                                        <i data-lucide="building-2" class="w-6 h-6 text-text-muted"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="space-y-2 text-text-secondary">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent-green mt-1.5">•</span>
+                                    <span>[Достижение/обязанность 1]</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-accent-green mt-1.5">•</span>
+                                    <span>[Достижение/обязанность 2]</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 bg-bg-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16" data-aos="fade-up">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-text-primary mb-4">Проекты</h2>
+                <div class="w-16 h-1 bg-accent-green"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project Card 1 -->
+                <article class="project-card bg-bg-tertiary rounded-sm p-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="p-3 bg-bg-primary border border-border-light rounded-sm">
+                            <i data-lucide="robot" class="w-6 h-6 text-accent-green"></i>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="text-text-muted hover:text-accent-green transition-colors">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="text-text-muted hover:text-accent-green transition-colors">
+                                <i data-lucide="external-link" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-text-primary mb-2">[Название проекта]</h3>
+                    <p class="text-text-secondary text-sm mb-4 line-clamp-3">
+                        [Краткое описание проекта на 2-3 строки. Что делает, какую проблему решает.]
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-bg-primary border border-border-light rounded-sm text-xs text-text-muted">ROS</span>
+                        <span class="px-2 py-1 bg-bg-primary border border-border-light rounded-sm text-xs text-text-muted">C++</span>
+                        <span class="px-2 py-1 bg-bg-primary border border-border-light rounded-sm text-xs text-text-muted">Python</span>
+                    </div>
+                </article>
+                
+                <!-- Project Card 2 -->
+                <article class="project-card bg-bg-tertiary rounded-sm p-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="p-3 bg-bg-primary border border-border-light rounded-sm">
+                            <i data-lucide="webcam" class="w-6 h-6 text-accent-blue"></i>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="text-text-muted hover:text-accent-blue transition-colors">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="text-text-muted hover:text-accent-blue transition-colors">
+                                <i data-lucide="external-link" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-text-primary mb-2">[Название проекта]</h3>
+                    <p class="text-text-secondary text-sm mb-4 line-clamp-3">
+                        [Краткое описание проекта на 2-3 строки.]
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-bg-primary border border-border-light rounded-sm text-xs text-text-muted">OpenCV</span>
+                        <span class="px-2 py-1 bg-bg-primary border border-border-light rounded-sm text-xs text-text-muted">YOLO</span>
+                        <span class="px-2 py-1 bg-bg-primary border border-border-light rounded-sm text-xs text-text-muted">PyTorch</span>
+                    </div>
+                </article>
+                
+                <!-- Project Card 3 -->
+                <article class="project-card bg-bg-tertiary rounded-sm p-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="p-3 bg-bg-primary border border-border-light rounded-sm">
+                            <i data-lucide="monitor" class="w-6 h-6 text-accent-green"></i>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="text-text-muted hover:text-accent-green transition-colors">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="text-text-muted hover:text-accent-green transition-colors">
+                                <i data-lucide="external-link" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-text-primary mb-2">[Название проекта]</h3>
+                    <p class="text-text-secondary text-sm mb-4 line-clamp-3">
+                        [Краткое описание проекта на 2-3 строки.]
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-bg-primary border border-border-light rounded-sm text-xs text-text-muted">React</span>
+                        <span class="px-2 py-1 bg-bg-primary border border-border-light rounded-sm text-xs text-text-muted">TypeScript</span>
+                        <span class="px-2 py-1 bg-bg-primary border border-border-light rounded-sm text-xs text-text-muted">FastAPI</span>
+                    </div>
+                </article>
+                
+                <!-- Project Card 4 -->
+                <article class="project-card bg-bg-tertiary rounded-sm p-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="p-3 bg-bg-primary border border-border-light rounded-sm">
+                            <i data-lucide="wifi" class="w-6 h-6 text-accent-blue"></i>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="text-text-muted hover:text-accent-blue transition-colors">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-text-primary mb-2">[Название проекта]</h3>
+                    <p class="text-text-secondary text-sm mb-4 line-clamp-3">
+                        [Краткое описание проекта на 2-3 строки.]
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-bg-primary border border-border-light rounded-sm text-xs text-text-muted">ESP32</span>
+                        <span class="px-2 py-1 bg-bg-primary border border-border-light rounded-sm text-xs text-text-muted">MQTT</span>
+                        <span class="px-2 py-1 bg-bg-primary border border-border-light rounded-sm text-xs text-text-muted">IoT</span>
+                    </div>
+                </article>
+                
+                <!-- Project Card 5 -->
+                <article class="project-card bg-bg-tertiary rounded-sm p-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="p-3 bg-bg-primary border border-border-light rounded-sm">
+                            <i data-lucide="drone" class="w-6 h-6 text-accent-green"></i>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="text-text-muted hover:text-accent-green transition-colors">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="text-text-muted hover:text-accent-green transition-colors">
+                                <i data-lucide="external-link" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-text-primary mb-2">[Название проекта]</h3>
+                    <p class="text-text-secondary text-sm mb-4 line-clamp-3">
+                        [Краткое описание проекта на 2-3 строки.]
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-bg-primary border border-border-light rounded-sm text-xs text-text-muted">MAVLink</span>
+                        <span class="px-2 py-1 bg-bg-primary border border-border-light rounded-sm text-xs text-text-muted">PX4</span>
+                        <span class="px-2 py-1 bg-bg-primary border border-border-light rounded-sm text-xs text-text-muted">C++</span>
+                    </div>
+                </article>
+                
+                <!-- Project Card 6 -->
+                <article class="project-card bg-bg-tertiary rounded-sm p-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="p-3 bg-bg-primary border border-border-light rounded-sm">
+                            <i data-lucide="database" class="w-6 h-6 text-accent-blue"></i>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="text-text-muted hover:text-accent-blue transition-colors">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-text-primary mb-2">[Название проекта]</h3>
+                    <p class="text-text-secondary text-sm mb-4 line-clamp-3">
+                        [Краткое описание проекта на 2-3 строки.]
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-bg-primary border border-border-light rounded-sm text-xs text-text-muted">Python</span>
+                        <span class="px-2 py-1 bg-bg-primary border border-border-light rounded-sm text-xs text-text-muted">SQL</span>
+                        <span class="px-2 py-1 bg-bg-primary border border-border-light rounded-sm text-xs text-text-muted">Docker</span>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="mt-12 text-center" data-aos="fade-up">
+                <a href="https://github.com/[username]" target="_blank" class="inline-flex items-center gap-2 text-text-secondary hover:text-accent-green transition-colors border-b border-transparent hover:border-accent-green pb-0.5">
+                    Смотреть все проекты на GitHub
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hackathons Section -->
+    <section id="hackathons" class="py-24 bg-bg-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16" data-aos="fade-up">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-text-primary mb-4">Хакатоны и соревнования</h2>
+                <div class="w-16 h-1 bg-accent-blue"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Hackathon 1 -->
+                <div class="border border-border-light rounded-sm p-6 bg-bg-secondary hover:border-accent-green transition-colors group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="font-display text-lg font-bold text-text-primary group-hover:text-accent-green transition-colors">[Название хакатона]</h3>
+                            <p class="text-text-muted text-sm mt-1">[Год] • [Место проведения]</p>
+                        </div>
+                        <div class="px-3 py-1 bg-accent-green text-bg-primary text-xs font-bold rounded-sm">
+                            1 МЕСТО
+                        </div>
+                    </div>
+                    <p class="text-text-secondary text-sm mb-4">
+                        [Краткое описание проекта/трека. Какая задача решалась.]
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs text-text-muted">[Технология 1]</span>
+                        <span class="text-xs text-text-muted">[Технология 2]</span>
+                    </div>
+                </div>
+                
+                <!-- Hackathon 2 -->
+                <div class="border border-border-light rounded-sm p-6 bg-bg-secondary hover:border-accent-blue transition-colors group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="font-display text-lg font-bold text-text-primary group-hover:text-accent-blue transition-colors">[Название хакатона]</h3>
+                            <p class="text-text-muted text-sm mt-1">[Год] • [Место проведения]</p>
+                        </div>
+                        <div class="px-3 py-1 bg-accent-blue text-bg-primary text-xs font-bold rounded-sm">
+                            WINNER
+                        </div>
+                    </div>
+                    <p class="text-text-secondary text-sm mb-4">
+                        [Краткое описание проекта/трека.]
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs text-text-muted">[Технология 1]</span>
+                        <span class="text-xs text-text-muted">[Технология 2]</span>
+                    </div>
+                </div>
+                
+                <!-- Hackathon 3 -->
+                <div class="border border-border-light rounded-sm p-6 bg-bg-secondary hover:border-accent-green transition-colors group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="font-display text-lg font-bold text-text-primary group-hover:text-accent-green transition-colors">[Название соревнования]</h3>
+                            <p class="text-text-muted text-sm mt-1">[Год] • [Место проведения]</p>
+                        </div>
+                        <div class="px-3 py-1 border border-accent-green text-accent-green text-xs font-bold rounded-sm">
+                            ФИНАЛИСТ
+                        </div>
+                    </div>
+                    <p class="text-text-secondary text-sm mb-4">
+                        [Краткое описание проекта/трека.]
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs text-text-muted">[Технология 1]</span>
+                        <span class="text-xs text-text-muted">[Технология 2]</span>
+                    </div>
+                </div>
+                
+                <!-- Hackathon 4 -->
+                <div class="border border-border-light rounded-sm p-6 bg-bg-secondary hover:border-accent-blue transition-colors group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="font-display text-lg font-bold text-text-primary group-hover:text-accent-blue transition-colors">[Название хакатона]</h3>
+                            <p class="text-text-muted text-sm mt-1">[Год] • [Место проведения]</p>
+                        </div>
+                        <div class="px-3 py-1 bg-bg-tertiary border border-border-light text-text-secondary text-xs font-bold rounded-sm">
+                            PARTICIPANT
+                        </div>
+                    </div>
+                    <p class="text-text-secondary text-sm mb-4">
+                        [Краткое описание проекта/трека.]
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs text-text-muted">[Технология 1]</span>
+                        <span class="text-xs text-text-muted">[Технология 2]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FrogeeSoft Section -->
+    <section id="frogeesoft" class="py-24 bg-bg-secondary relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0" style="background-image: radial-gradient(#00ff88 1px, transparent 1px); background-size: 20px 20px;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-sm border border-accent-green/30 bg-accent-green/10 mb-6">
+                        <span class="text-accent-green text-sm font-medium">Team Project</span>
+                    </div>
+                    
+                    <h2 class="font-display text-4xl md:text-5xl font-bold text-text-primary mb-6">
+                        FrogeeSoft <span class="text-text-muted">/</span> <span class="gradient-text">S.I.T</span>
+                    </h2>
+                    
+                    <p class="text-text-secondary text-lg mb-8 leading-relaxed">
+                        Технологический проект. Создаём инструменты для разработчиков, проектируем электронные устройства, собираем робототехнические системы и проверяем идеи на инженерных соревнованиях.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center gap-3 p-3 border border-border-light rounded-sm bg-bg-tertiary">
+                            <i data-lucide="code-2" class="w-5 h-5 text-accent-green"></i>
+                            <span class="text-text-secondary text-sm">Developer Tools</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 border border-border-light rounded-sm bg-bg-tertiary">
+                            <i data-lucide="cpu" class="w-5 h-5 text-accent-blue"></i>
+                            <span class="text-text-secondary text-sm">Devices</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 border border-border-light rounded-sm bg-bg-tertiary">
+                            <i data-lucide="bot" class="w-5 h-5 text-accent-green"></i>
+                            <span class="text-text-secondary text-sm">Robotics</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 border border-border-light rounded-sm bg-bg-tertiary">
+                            <i data-lucide="trophy" class="w-5 h-5 text-accent-blue"></i>
+                            <span class="text-text-secondary text-sm">Competitions</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#" class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent-green text-bg-primary font-semibold rounded-sm hover:bg-accent-green/90 transition-all">
+                            <i data-lucide="globe" class="w-4 h-4"></i>
+                            Сайт проекта
+                        </a>
+                        <a href="#" class="inline-flex items-center gap-2 px-5 py-2.5 border border-border-light text-text-primary font-semibold rounded-sm hover:border-accent-green hover:text-accent-green transition-all">
+                            <i data-lucide="github" class="w-4 h-4"></i>
+                            GitHub
+                        </a>
+                        <a href="#" class="inline-flex items-center gap-2 px-5 py-2.5 border border-border-light text-text-primary font-semibold rounded-sm hover:border-accent-blue hover:text-accent-blue transition-all">
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                            Telegram
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="relative" data-aos="fade-left">
+                    <div class="relative w-full aspect-square max-w-md mx-auto bg-bg-tertiary border border-border-light rounded-sm p-8 flex items-center justify-center">
+                        <!-- Pixel Frog Logo -->
+                        <div class="text-center">
+                            <div class="w-32 h-32 mx-auto mb-6 relative">
+                                <!-- Pixel art frog representation -->
+                                <div class="absolute inset-0 grid grid-cols-8 grid-rows-8 gap-0.5">
+                                    <!-- Head -->
+                                    <div class="col-start-2 col-end-4 row-start-1 bg-accent-green"></div>
+                                    <div class="col-start-5 col-end-7 row-start-1 bg-accent-green"></div>
+                                    <div class="col-start-2 col-end-7 row-start-2 bg-accent-green"></div>
+                                    <div class="col-start-2 col-end-7 row-start-3 bg-accent-green"></div>
+                                    <!-- Eyes -->
+                                    <div class="col-start-2 col-end-3 row-start-2 bg-white"></div>
+                                    <div class="col-start-6 col-end-7 row-start-2 bg-white"></div>
+                                    <!-- Body -->
+                                    <div class="col-start-2 col-end-7 row-start-4 bg-accent-green"></div>
+                                    <div class="col-start-1 col-end-8 row-start-5 bg-blue-600"></div>
+                                    <div class="col-start-1 col-end-8 row-start-6 bg-blue-600"></div>
+                                    <!-- Legs -->
+                                    <div class="col-start-1 col-end-3 row-start-7 bg-accent-green"></div>
+                                    <div class="col-start-6 col-end-8 row-start-7 bg-accent-green"></div>
+                                    <div class="col-start-2 col-end-4 row-start-8 bg-accent-green"></div>
+                                    <div class="col-start-5 col-end-7 row-start-8 bg-accent-green"></div>
+                                </div>
+                            </div>
+                            <div class="font-display text-2xl font-bold text-text-primary mb-2">FrogeeSoft</div>
+                            <div class="text-accent-green font-mono text-sm">Est. 2024</div>
+                        </div>
+                        
+                        <!-- Decorative corners -->
+                        <div class="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-accent-green"></div>
+                        <div class="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-accent-blue"></div>
+                        <div class="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-accent-blue"></div>
+                        <div class="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-accent-green"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-bg-primary">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div data-aos="fade-up">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-text-primary mb-6">Давайте работать вместе</h2>
+                <p class="text-text-secondary text-xl mb-12 max-w-2xl mx-auto">
+                    Открыт к стажировкам, работе и совместным проектам. Всегда рад обсудить интересные идеи и технологии.
+                </p>
+                
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <a href="mailto:email@example.com" class="group p-6 border border-border-light rounded-sm bg-bg-secondary hover:border-accent-green transition-all">
+                        <div class="w-12 h-12 mx-auto mb-4 flex items-center justify-center border border-border-light rounded-sm group-hover:border-accent-green group-hover:bg-accent-green/10 transition-all">
+                            <i data-lucide="mail" class="w-6 h-6 text-text-secondary group-hover:text-accent-green"></i>
+                        </div>
+                        <div class="text-text-muted text-sm mb-1">Email</div>
+                        <div class="text-text-primary font-medium">email@example.com</div>
+                    </a>
+                    
+                    <a href="https://github.com/[username]" target="_blank" class="group p-6 border border-border-light rounded-sm bg-bg-secondary hover:border-accent-blue transition-all">
+                        <div class="w-12 h-12 mx-auto mb-4 flex items-center justify-center border border-border-light rounded-sm group-hover:border-accent-blue group-hover:bg-accent-blue/10 transition-all">
+                            <i data-lucide="github" class="w-6 h-6 text-text-secondary group-hover:text-accent-blue"></i>
+                        </div>
+                        <div class="text-text-muted text-sm mb-1">GitHub</div>
+                        <div class="text-text-primary font-medium">@username</div>
+                    </a>
+                    
+                    <a href="https://t.me/[username]" target="_blank" class="group p-6 border border-border-light rounded-sm bg-bg-secondary hover:border-accent-green transition-all">
+                        <div class="w-12 h-12 mx-auto mb-4 flex items-center justify-center border border-border-light rounded-sm group-hover:border-accent-green group-hover:bg-accent-green/10 transition-all">
+                            <i data-lucide="send" class="w-6 h-6 text-text-secondary group-hover:text-accent-green"></i>
+                        </div>
+                        <div class="text-text-muted text-sm mb-1">Telegram</div>
+                        <div class="text-text-primary font-medium">@username</div>
+                    </a>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#" class="inline-flex items-center gap-2 px-8 py-4 bg-accent-green text-bg-primary font-bold rounded-sm hover:bg-accent-green/90 transition-all hover:scale-105">
+                        <i data-lucide="download" class="w-5 h-5"></i>
+                        Скачать резюме
+                    </a>
+                    <a href="mailto:email@example.com?subject=Предложение о сотрудничестве" class="inline-flex items-center gap-2 px-8 py-4 border border-border-light text-text-primary font-semibold rounded-sm hover:border-accent-green hover:text-accent-green transition-all">
+                        Написать письмо
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-border-light bg-bg-secondary py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-2">
+                    <span class="font-display font-bold text-xl">
+                        <span class="text-accent-green">A</span>.<span class="text-accent-blue">D</span>
+                    </span>
+                    <span class="text-text-muted text-sm">© 2026</span>
+                </div>
+                
+                <div class="flex items-center gap-6">
+                    <a href="https://github.com/[username]" target="_blank" class="text-text-muted hover:text-text-primary transition-colors">
+                        <i data-lucide="github" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://t.me/[username]" target="_blank" class="text-text-muted hover:text-text-primary transition-colors">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </a>
+                    <a href="mailto:email@example.com" class="text-text-muted hover:text-text-primary transition-colors">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-text-muted hover:text-text-primary transition-colors">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                </div>
+                
+                <div class="text-text-muted text-sm">
+                    Made with <span class="text-accent-green">&lt;</span> code <span class="text-accent-blue">/&gt;</span>
+                </div>
+            </div>
+        </div>
     </footer>
 
-    <div class="toast" role="status" aria-live="polite">
-        <span class="toast-icon">✓</span>
-        <span class="toast-message">СКОПИРОВАНО!</span>
-    </div>
-
-    <script src="script.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Initialize AOS animation library
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 100
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('shadow-lg');
+                navbar.classList.add('bg-bg-primary/95');
+            } else {
+                navbar.classList.remove('shadow-lg');
+                navbar.classList.remove('bg-bg-primary/95');
+            }
+            
+            lastScroll = currentScroll;
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
